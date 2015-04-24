@@ -1,0 +1,10 @@
+<md-bottom-sheet class="md-list md-has-header">
+  <md-subheader>Class Sections</md-subheader>
+  <md-list>
+    <md-item ng-repeat="item in items">
+      <md-button ng-click="listItemClick(item)">
+        <span>{{ item }}</span>
+      </md-button>
+    </md-item>
+  </md-list>
+</md-bottom-sheet>

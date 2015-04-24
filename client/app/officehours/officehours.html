@@ -1,0 +1,140 @@
+<md-tabs class="md-primary md-hue-1" md-selected="switchData.selectedIndex" md-stretch-tabs="always">
+  <md-tab id="0">
+    7th Grade
+  </md-tab>
+  <md-tab id="1">
+    9th Grade
+  </md-tab>
+  <md-tab id="2">
+    10th Grade
+  </md-tab>
+</md-tabs>
+<ng-switch on="data.selectedIndex" class="tabpanel-container" ng-show="items">
+    <div class="content" 
+         role="tabpanel" 
+         id="{{data.name}}-content" 
+         aria-labelledby="grade{{data.name}}" 
+         ng-if="$index == switchData.selectedIndex" 
+         ng-repeat="data in items">
+      <div layout="row" layout-md="column" layout-sm="column" layout-align="space-around start">
+        <div class="grades-summary" layout="column" layout-align="space-around center" layout-fill>
+          <div class="grades-header" layout="row" layout-align="start center" layout-fill>
+            <div flex="60"
+                 ng-click="col1SortOrder('name')"
+                 ng-class="col1OrderBy == 'name' ? 'heavy' : 'pass'">
+              Advisory
+            </div>
+            <div flex
+                 ng-click="col1SortOrder('num')"
+                 ng-class="col1OrderBy == 'num' ? 'heavy' : 'pass'">
+              Students
+            </div>
+            <div flex
+                 ng-click="col1SortOrder('attendance')"
+                 ng-class="col1OrderBy == 'attendance' ? 'heavy' : 'pass'">
+              Attendance
+            </div>
+          </div>
+          <div class="course-grades" layout-fill>
+            <md-content>
+              <md-list>
+                <md-item ng-repeat="advisor in data.data | orderBy:col1OrderBy:col1Reverse"
+                         ng-click="selectedAdvisory(advisor)">
+                  <md-item-content md-ink-ripple="#FFEB3B" md-highlight="isSectionSelected(advisor.name)">
+                    <div class="md-tile-content" layout="row" layout-align="space-around center">
+                      <div flex>
+                        {{advisor.name}}
+                      </div>
+                      <div flex="15" >
+                        {{advisor.num}}
+                      </div>
+                      <div flex="15" >
+                        {{advisor.attendance}}%
+                      </div>
+                    </div>
+                  </md-item-content>
+                  <md-divider ng-if="!$last"></md-divider>
+                </md-item>
+              </md-list>
+            </md-content>
+          </div>
+        </div>
+        <div class="student-list" flex layout-fill>
+          <div 
+               layout="column" 
+               layout-align="space-around center" 
+               layout-fill
+               ng-show="studentList">
+            <div class="student-header" layout="row" layout-align="start center" layout-fill>
+              <div flex="18" hide-md hide-sm 
+                   ng-click="sortOrder('student_id')"
+                   ng-class="orderBy == 'student_id' ? 'heavy' : 'pass'">
+                Student ID
+              </div>
+              <div flex="35" ng-click="sortOrder('last_name')"
+                   ng-class="orderBy == 'last_name' ? 'heavy' : 'pass'">
+                Student Name
+              </div>
+              <div flex="15">
+              </div>
+              <div flex="15" ng-click="sortOrder('attended')"
+                   ng-class="orderBy == 'attended' ? 'heavy' : 'pass'">
+                Attended
+              </div>
+              <div flex="12" ng-click="sortOrder('total')"
+                   ng-class="orderBy == 'total' ? 'heavy' : 'pass'">
+                Assigned
+              </div>
+            </div>
+            <div class="student-grades" layout-fill>
+              <md-content>
+                <md-list>
+                  <md-item ng-repeat="student in studentList | orderBy:orderBy:reverse"
+                           ng-click="openProfile(student.illuminate_student_id)">
+                    <md-item-content>
+                      <div class="md-tile-content" layout="row" layout-align="space-around center">
+                        <div flex="18" hide-md hide-sm>
+                          {{student.student_id}}
+                        </div>
+                        <div flex="40">
+                          {{student.last_name}}, {{student.first_name}}
+                        </div>
+                        <div flex="15">
+                          <md-button class="md-raised md-warn" ng-show="{{student.sped}}">SpEd</md-button>
+                        </div>
+                        <div flex="15">
+                          {{student.attended}}
+                        </div>
+                        <div flex="12">
+                          {{student.total}}
+                        </div>
+                      </div>
+                      <md-tooltip>
+      				        <div ng-repeat="program in student.programs">
+      				        	{{program}}
+      				        </div>
+      				      </md-tooltip>
+                    </md-item-content>
+                    <md-divider ng-if="!$last"></md-divider>
+                  </md-item>
+                </md-list>
+              </md-content>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+</ng-switch>
+<div class="loading" ng-hide="items" layout="row" layout-align="center center">
+  <div>
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+</div>
+<div class="loading" ng-show="items === 'Error'" layout="column" layout-align="center center">
+    <div>
+      <img src="bower_components/material-design-icons/notification/2x_web/ic_adb_black_24dp.png" />
+    </div>
+    <div>
+      You have encountered a bug, please refresh the page.
+    </div>
+</div>

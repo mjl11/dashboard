@@ -1,0 +1,15 @@
+<div layout="row" layout-align="center center" layout-margin>
+	<div flex hide-sm></div>
+	<div layout="column" layout-align="center center" layout-margin flex flex-md="70" flex-lg="50" flex-gt-lg="50">
+		
+		<ttm-chart ng-repeat="item in items | orderBy:'name'" items="item" layout-fill></ttm-chart>
+
+		<md-button 
+			class="md-primary md-fab md-fab-top-right question"
+			ng-click="showInfo()">
+	      ?
+		</md-button>
+
+	</div>
+	<div flex hide-sm></div>
+</div>

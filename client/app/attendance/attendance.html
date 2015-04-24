@@ -1,0 +1,49 @@
+<div class="container">
+	  <div class="attendance-header" layout="row" layout-align="start center">
+	  	<div hide-sm flex>
+	      Student ID
+	    </div>
+	    <div flex="30">
+	      Student Name
+	    </div>
+	    <div flex>
+	      Grade Level
+	    </div>
+	    <div flex hide-sm>
+	      Advisor
+	    </div>
+	    <div flex>
+	      Days Absent
+	    </div>
+	  </div>
+	  <div class="course-grades" layout-fill>
+	    <md-content>
+	      <md-list>
+	        <md-item ng-repeat="student in items | orderBy:'num_absent':true"
+	                 ng-click="openProfile(student.illuminate_student_id)">
+	          <md-item-content>
+	            <div class="md-tile-content" layout="row" layout-align="space-around center">
+	            	<div flex="15" hide-sm>
+	                {{student.student_id}}
+	              </div>
+	              <div flex="30">
+	                {{student.last_name}}, {{student.first_name}}
+	              </div>
+	              <div flex="15" >
+	                {{student.grade_level}}
+	              </div>
+	              <div flex="15" hide-sm>
+	                {{student.advisor}}
+	              </div>
+	              <div flex="15" >
+	                {{student.num_absent}}
+	              </div>
+	            </div>
+	          </md-item-content>
+	          <md-divider ng-if="!$last"></md-divider>
+	        </md-item>
+	      </md-list>
+	    </md-content>
+	  </div>
+</div>
+   

@@ -1,0 +1,38 @@
+<md-content ng-show="assigned" class="md-padding" style="height: 600px;padding: 24px; margin: 0 10%;">
+	You have been assigned to Office Hours for the following courses:
+	<md-list>
+      <md-item ng-repeat="course in assigned">
+        <md-item-content>
+          <div class="md-tile-left">
+				<img src='../../bower_components/material-design-icons/action/1x_web/ic_book_black_24dp.png' />
+          </div>
+          <div class="md-tile-content">
+            <h3>{{course}}</h3>
+          </div>
+        </md-item-content>
+      </md-item>
+    </md-list>
+    Your attendance this cycle:
+    <md-list>
+      <md-item ng-repeat="course in attended">
+        <md-item-content>
+          <div class="md-tile-left">
+				<img src='../../bower_components/material-design-icons/navigation/1x_web/ic_check_black_24dp.png' />
+          </div>
+          <div class="md-tile-content">
+            <h3>{{course.course}}</h3>
+            <h4>{{course.attended}}</h4>
+          </div>
+        </md-item-content>
+      </md-item>
+    </md-list>
+    <p>
+    	You can find the Office Hours schedule  
+    	<a href="https://sites.google.com/a/intrinsicschools.org/student-site/2014-2015-office-hours-schedule"
+    		target="_blank">here.</a>
+    </p>
+</md-content>
+
+<md-content ng-hide="assigned" class="md-padding" style="height: 600px;padding: 24px;">
+	 You are not currently required to attend Office Hours.
+</md-content>

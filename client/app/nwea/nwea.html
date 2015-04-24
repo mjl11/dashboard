@@ -1,0 +1,44 @@
+<md-tabs class="md-primary md-hue-1" md-selected="data.selectedIndex" md-stretch-tabs="always">
+  <md-tab id="math">
+    Math
+  </md-tab>
+  <md-tab id="reading">
+    Reading
+  </md-tab>
+  <md-tab id="Science">
+    Science
+  </md-tab>
+</md-tabs>
+<ng-switch on="data.selectedIndex" class="tabpanel-container">
+    <div role="tabpanel" id="tab1-content" ng-switch-when="0">
+      <div layout="row" layout-align="center center" layout-margin>
+        <div flex hide-sm></div>
+        <div layout="column" layout-align="center center" layout-margin flex flex-md="90" flex-lg="70" flex-gt-lg="60">
+			     <nwea-math ng-repeat="item in mitems | orderBy:'section':true" items="item" layout-fill></nwea-math>
+		    </div>
+        <div flex hide-sm></div>
+      </div>
+    </div>
+    <div role="tabpanel" id="tab2-content" ng-switch-when="1">
+        <div layout="row" layout-align="center center" layout-margin>
+          <div flex hide-sm></div>
+          <div layout="column" layout-align="center center" layout-margin flex flex-md="90" flex-lg="70" flex-gt-lg="60">
+             <nwea-reading ng-repeat="item in ritems | orderBy:'section':true" items="item" layout-fill></nwea-reading>
+          </div>
+          <div flex hide-sm></div>
+        </div>
+      </div>
+    </div>
+    <div role="tabpanel" id="tab3-content" ng-switch-when="2">
+        <div layout="row" layout-align="center center" layout-margin>
+          <div flex hide-sm></div>
+          <div layout="column" layout-align="center center" layout-margin flex flex-md="90" flex-lg="70" flex-gt-lg="60">
+             <nwea-science ng-repeat="item in sitems | orderBy:'section':true" items="item" layout-fill></nwea-science>
+          </div>
+          <div flex hide-sm></div>
+        </div>
+      </div>
+    </div>
+</ng-switch>
+
+

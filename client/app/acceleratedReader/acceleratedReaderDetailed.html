@@ -1,0 +1,80 @@
+<div class="content">
+	<div layout="column" layout-align="space-around center">
+		<h1>{{vm.month}} Report</h1>
+		<md-button class="classbtn md-accent" ng-click="vm.showListBottomSheet($event)">
+		      Select Class Section
+		</md-button>
+		<div ng-show="vm.selectedSection" layout-fill>
+			  <div class="ar-header" layout="row" layout-align="start start">
+			  	<div hide-sm hide-md hide-lg flex-gt-lg="10">
+			      Student ID
+			    </div>
+			    <div flex-md="35" flex-sm="50" flex-lg="20" flex-gt-lg="15">
+			      Student
+			    </div>
+			    <div flex hide-sm hide-md hide-lg flex-gt-lg="10">
+			      Date Taken
+			    </div>
+			    <div flex hide-sm hide-md flex-lg="15" flex-gt-lg="15">
+			      Author
+			    </div>
+			    <div flex hide-sm hide-md flex-gt-md="20" flex-lg="15" flex-gt-lg="15">
+			      Title
+			    </div>
+			    <div flex flex-md="15" flex-gt-md="10" flex-lg="15" flex-gt-lg="10">
+			      Score
+			    </div>
+			    <div flex hide-sm flex-md="10" flex-gt-md="10" flex-lg="10" flex-gt-lg="10">
+			      Points
+			    </div>
+			    <div flex flex-md="20" flex-gt-md="10" flex-lg="15" flex-gt-lg="10">
+			      Word Count
+			    </div>
+			    <div flex flex-md="10" flex-gt-md="15" flex-lg="15" flex-gt-lg="10"> 
+			      Book Level
+			    </div>
+			  </div>
+			  <div class="course-grades" layout-fill>
+			    <md-content>
+			      <md-list>
+			        <md-item ng-repeat="student in vm.selectedSection"
+			                 ng-click="openProfile(student.illuminate_student_id)">
+			          <md-item-content>
+			            <div class="md-tile-content" layout="row" layout-align="start start">
+			            	<div flex="10" hide-sm hide-md hide-lg>
+			                {{student.student_id}}
+			              </div>
+			              <div flex-md="35" flex-sm="50" flex-lg="20" flex-gt-lg="15">
+			                {{student.last_name}}, {{student.first_name}}
+			              </div>
+			              <div flex="10" hide-sm hide-md hide-lg>
+			                {{student.date_taken}}
+			              </div>
+			              <div flex="15" hide-sm hide-md flex-lg="15" flex-gt-lg="15">
+			                {{student.author}}
+			              </div>
+			              <div flex="15" hide-sm hide-md flex-lg="15" flex-gt-lg="15">
+			                {{student.title}}
+			              </div>
+			              <div flex-md="15" flex-sm="15" flex-lg="15" flex-gt-lg="10">
+			                {{student.quiz_score}}{{student.quiz_score == '' ? '' : '%'}}
+			              </div>
+			              <div flex="10" hide-sm flex-lg="15" flex-gt-lg="10">
+			                {{student.points_scored}}{{student.points_scored == '' ? '' : '/'}}{{student.points_possible}}
+			              </div>
+			              <div flex-md="20" flex-sm="20" flex-lg="15" flex-gt-lg="10">
+			                {{student.word_count}}
+			              </div>
+			              <div flex-md="10" flex-sm="10" flex-gt-lg="10">
+			                {{student.book_level}}
+			              </div>
+			            </div>
+			          </md-item-content>
+			          <md-divider ng-if="!$last"></md-divider>
+			        </md-item>
+			      </md-list>
+			    </md-content>
+			  </div>
+		</div>
+	</div>
+</div>

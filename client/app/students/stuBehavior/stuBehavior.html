@@ -1,0 +1,41 @@
+<div layout="row" layout-align="center start">
+	<div flex hide-sm>
+	</div>
+	<div layout="column" layout-align="start center" flex flex-gt-sm="50" layout-margin>
+		<div ng-repeat="cycle in items | orderBy:'cycle':true " layout-fill>
+			<md-toolbar class="md-theme-light">
+			    <h1 class="md-toolbar-tools">
+			      <span>Cycle: {{cycle.cycle}}</span>
+				</h1>
+			</md-toolbar>
+			<md-content>
+				<md-list>
+				  <md-item ng-repeat="behavior in cycle.data">
+				    <md-item-content>
+				      <div class="md-tile-content">
+				      	<div layout="row">
+				      		<div flex ng-show="{{behavior.value}} >= 0">
+				      			<img src='../../bower_components/material-design-icons/social/2x_web/ic_mood_black_24dp.png' />
+				      		</div>
+				      		<div layout="column" flex="75">
+						        <h3>{{behavior.date}}</h3>
+						        <h4>{{behavior.infraction}}</h4>
+						        <p>
+						          {{behavior.staff}}
+						        </p>
+						    </div>
+						    <div ng-hide="{{behavior.value}} >= 0" flex>
+						    	<h2>{{behavior.value}}</h2>
+						    </div>
+					    </div>
+				      </div>
+				    </md-item-content>
+				    <md-divider ng-if="!$last"></md-divider>
+				  </md-item>
+				</md-list>
+			</md-content>
+		</div>
+	</div>
+	<div flex hide-sm>
+	</div>
+</div>

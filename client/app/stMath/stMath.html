@@ -1,0 +1,58 @@
+<div class="content container">
+	<div layout="column" layout-align="space-around center">
+		<h1>{{vm.date}}</h1>
+		<md-button class="classbtn md-accent" ng-click="vm.showListBottomSheet($event)">
+		      Select Class Section
+		</md-button>
+		<div ng-show="vm.selectedSection" class="attendance-header" layout="row" layout-align="start start" layout-fill>
+			<div hide-sm flex>
+				Student ID
+			</div>
+			<div flex="25">
+				Student Name
+			</div>
+			<div flex>
+				Time on Fluency
+			</div>
+			<div flex>
+				Time on Program
+			</div>
+			<div flex>
+				Syllabus Progress
+			</div>
+			<div flex>
+				Points
+			</div>
+		</div>
+	    <md-content layout-fill>
+	      <md-list>
+	        <md-item ng-repeat="student in vm.selectedSection"
+	                 ng-click="vm.openProfile(student.illuminate_student_id)">
+	          <md-item-content>
+	            <div class="md-tile-content" layout="row" layout-align="space-around center">
+	            	<div flex="15" hide-sm>
+	                {{student.student_id}}
+	              </div>
+	              <div flex="25">
+	                {{student.last_name}}, {{student.first_name}}
+	              </div>
+	              <div flex="15" >
+	                {{student.fluency_minutes}}
+	              </div>
+	              <div flex="15" hide-sm>
+	                {{student.total_minutes}}
+	              </div>
+	              <div flex="15" >
+	                {{student.progress}}
+	              </div>
+	              <div flex="10" >
+	                {{student.points}}
+	              </div>
+	            </div>
+	          </md-item-content>
+	          <md-divider ng-if="!$last"></md-divider>
+	        </md-item>
+	      </md-list>
+	    </md-content>
+	</div>
+</div>

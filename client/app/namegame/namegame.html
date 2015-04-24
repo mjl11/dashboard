@@ -1,0 +1,22 @@
+<div layout="column" layout-align="start center" layout-margin>
+	<div layout="row" layout-align="center start">
+		<div flex-gt-sm></div>
+		<md-whiteframe class="md-whiteframe-z2" flex flex-gt-sm="50">
+			<img ng-src="../../assets/images/students/{{students[0].student_id}}.jpg" layout-fill />
+		</md-whiteframe>
+		<div flex-gt-sm></div>
+	</div>
+	<md-radio-group ng-model="selectedStu" ng-click="checkStudent()">
+	      <md-radio-button ng-value="stu.student_id" 
+	      				   ng-repeat="stu in students | orderBy:'student_id'">
+	      		{{stu.name}}
+		  </md-radio-button>
+	</md-radio-group>
+</div>
+ <md-button class="md-fab md-fab-bottom-right"
+ 	ng-class="{'md-primary': percentCorrect >= 50, 'md-warn': percentCorrect < 50}" >
+        {{percentCorrect}}%
+    <md-tooltip>
+        Total Correct
+    </md-tooltip>
+</md-button>

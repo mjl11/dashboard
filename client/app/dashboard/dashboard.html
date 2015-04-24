@@ -1,0 +1,24 @@
+<div layout="row" layout-align="center start">
+	<div flex-gt-md="10">
+	</div>
+	<div layout="column" layout-align="center center" layout-margin flex>
+		<div layout="row" layout-sm="column" layout-margin layout-fill flex>
+			<ada-chart items="overallItems" drilldown="drilldownItems" flex flex-gt-md="60"></ada-chart>
+			<md-content class="dataBlock" flex>
+				<div layout="column" layout-align="center center">
+					<h2>CPS Freshman OnTrack</h2>
+					<h1 flex>{{cpsOntrack}}</h1>
+					<div layout="row" layout-align="end end" layout-fill>
+						<p>Target: 90%</p>
+					</div>
+				</div>
+			<md-content>
+		</div>
+		<div layout="row" layout-sm="column" layout-margin layout-fill flex>
+			<gpa-chart items="items" flex flex-md="40" flex-lg="40" flex-gt-lg="50"></gpa-chart>
+			<detention-chart items="behavior" flex flex-md="60" flex-lg="60" flex-gt-lg="50"></detention-chart>
+		</div>
+	</div>
+	<div flex-gt-md="10">
+	</div>
+</div>
