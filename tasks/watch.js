@@ -33,8 +33,8 @@ module.exports = function () {
 
   watch([
     'client/styles/**/*.scss',
-    'client/views/**/*.scss',
-    'client/directives/**/*.scss'
+    'client/app/**/*.scss',
+    'client/components/**/*.scss'
   ], function () {
     gulp.src('client/styles/app.scss')
       .pipe(plumber())
@@ -45,24 +45,16 @@ module.exports = function () {
 
   var coreFiles = [
     'client/index.html',
-    'client/views',
-    'client/views/**/*.html',
-    'client/views/**/*.js',
-    '!client/views/**/*.scss',
-    '!client/views/**/*.spec.js',
-    '!client/views/**/*.e2e.js',
-    'client/directives',
-    'client/directives/**/*.html',
-    'client/directives/**/*.js',
-    '!client/directives/**/*.spec.js',
-    'client/services',
-    'client/services/**/*.js',
-    '!client/services/**/*.spec.js',
-    'client/animations',
-    'client/animations/*.js',
-    'client/filters',
-    'client/filters/**/*.js',
-    '!client/filters/**/*.spec.js'
+    'client/app',
+    'client/app/**/*.html',
+    'client/app/**/*.js',
+    '!client/app/**/*.scss',
+    '!client/app/**/*.spec.js',
+    '!client/app/**/*.e2e.js',
+    'client/components',
+    'client/components/**/*.html',
+    'client/components/**/*.js',
+    '!client/components/**/*.spec.js'
   ];
 
   var lastInjection = Date.now();

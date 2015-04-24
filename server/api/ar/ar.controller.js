@@ -7,7 +7,7 @@ var Ar = require('./ar.model');
 exports.index = function(req, res) {
   Ar.find(function (err, ars) {
     if(err) { return handleError(res, err); }
-    return res.json(200, ars);
+    return res.status(200).json(ars);
   });
 };
 
