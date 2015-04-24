@@ -8,7 +8,7 @@ exports.index = function(req, res) {
         if (err) {
             return handleError(res, err);
         }
-        return res.json(200, absences);
+        return res.status(200).json(absences);
     });
 };
 

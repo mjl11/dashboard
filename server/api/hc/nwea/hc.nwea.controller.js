@@ -11,7 +11,7 @@ exports.reading = function(req, res) {
         if (err) {
             return handleError(res, err);
         }
-        return res.json(200, data);
+        return res.status(200).json(data);
     });
 };
 
@@ -20,7 +20,7 @@ exports.math = function(req, res) {
         if (err) {
             return handleError(res, err);
         }
-        return res.json(200, data);
+        return res.status(200).json(data);
     });
 };
 
@@ -29,7 +29,7 @@ exports.science = function(req, res) {
         if (err) {
             return handleError(res, err);
         }
-        return res.json(200, data);
+        return res.status(200).json(data);
     });
 };
 
