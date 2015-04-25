@@ -1,0 +1,18 @@
+<md-grid-list
+    md-cols-sm="7" 
+    md-cols-md="7"
+    md-row-height-md="6:3"
+    md-cols-lg="14"
+    md-cols-gt-lg="15" 
+    md-row-height="4:3"
+    md-gutter="4px" >
+	<md-grid-tile ng-repeat="course in vm.courses"
+	              md-rowspan="7"
+	              md-colspan="7"
+	              md-colspan-lg="7"
+	              md-rowspan-lg="7"
+	              md-colspan-gt-lg="5"
+	              md-rowspan-gt-lg="5">
+	  <grades-histogram course="course"></grades-histogram>
+	</md-grid-tile>
+</md-grid-list>

@@ -12,9 +12,9 @@ angular.module('appApp')
             $scope.selectedMenu = 'Belmont Campus';
 
             var currentUser = User.get(function(res) {
-                $scope.userPic = res.google.picture;
-                $scope.displayName = res.name;
-                $scope.USER_ID = res.email;
+                $scope.userPic = res.google.image.url;
+                $scope.displayName = res.google.displayName;
+                $scope.USER_ID = res.email; 
             });
 
             $scope.toggleLeft = function() {
@@ -74,6 +74,10 @@ angular.module('appApp')
             }, {
                 'name': 'Grades',
                 'sections': [{
+                    'name': 'Overview',
+                    'url': '/grades/histogram'
+                },
+                {
                     'name': 'Current GPA',
                     'url': '/grades/currentgpa'
                 }, {
@@ -87,11 +91,14 @@ angular.module('appApp')
                     'url': '/ssh'
                 }]
             }, {
-                'name': 'Online Programs',
-                'sections': [{
+                /**
+                {
                     'name': 'Accelerated Reader Overview',
                     'url': '/ar'
-                }, {
+                }
+                **/
+                'name': 'Online Programs',
+                'sections': [{
                     'name': 'Accelerated Reader Detailed',
                     'url': '/ar/detailed'
                 }, {

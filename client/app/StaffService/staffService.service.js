@@ -27,6 +27,9 @@ angular.module('appApp')
                 currentGPA: function() {
                     return $http.get('/api/grades/currentGPA');
                 },
+                gradesHistogram: function() {
+                    return $http.get('/api/grades/histogram');
+                },
                 getTTM: function() {
                     return $http.get('/api/hc/ttm');
                 },

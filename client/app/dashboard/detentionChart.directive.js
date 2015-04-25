@@ -12,7 +12,7 @@ angular.module('appApp')
             link: function(scope, element, attrs) {
 
                 scope.$watch('items', function(newValue) {
-
+ 
                     var chart = new Highcharts.Chart({
                         chart: {
                             renderTo: 'detentionChart',
