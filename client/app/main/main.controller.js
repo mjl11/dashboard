@@ -12,8 +12,14 @@ angular.module('appApp')
             $scope.selectedMenu = 'Belmont Campus';
 
             var currentUser = User.get(function(res) {
-                $scope.userPic = res.google.image.url;
-                $scope.displayName = res.google.displayName;
+                try {
+                   $scope.userPic = res.google.image.url;
+                   $scope.displayName = res.google.displayName;
+                }
+                catch (e) {
+                   $scope.userPic = res.google.picture;
+                   $scope.displayName = res.google.name;
+                }
                 $scope.USER_ID = res.email; 
             });
 
