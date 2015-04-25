@@ -19,8 +19,8 @@
 	  <div class="course-grades" layout-fill>
 	    <md-content>
 	      <md-list>
-	        <md-item ng-repeat="student in items | orderBy:'num_absent':true"
-	                 ng-click="openProfile(student.illuminate_student_id)">
+	        <md-item ng-repeat="student in vm.items | orderBy:'num_absent':true"
+	                 ng-click="vm.openProfile(student.illuminate_student_id)">
 	          <md-item-content>
 	            <div class="md-tile-content" layout="row" layout-align="space-around center">
 	            	<div flex="15" hide-sm>

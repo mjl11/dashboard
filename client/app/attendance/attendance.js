@@ -6,6 +6,7 @@ angular.module('appApp')
             .when('/attendance/absences', {
                 templateUrl: 'app/attendance/attendance.html',
                 controller: 'AttendanceCtrl',
+                controllerAs: 'vm',
                 authenticate: true,
                 staff: true
             });
