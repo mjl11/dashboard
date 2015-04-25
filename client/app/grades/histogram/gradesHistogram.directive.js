@@ -44,6 +44,26 @@ angular.module('appApp')
                         tooltip: {
                             pointFormat: '<b>{point.y} students</b>'
                         },
+                        plotOptions: {
+                            column: {
+                                cursor: 'pointer',
+                                point: {
+                                    events: {
+                                        click: function (e) {
+                                            hs.htmlExpand(null, {
+                                                pageOrigin: {
+                                                    x: e.pageX || e.clientX,
+                                                    y: e.pageY || e.clientY
+                                                },
+                                                headingText: this.series.name,
+                                                maincontentText:  printArray(scope.course.students[e.point.category]),
+                                                width: 350
+                                            });
+                                        }
+                                    }
+                                }
+                            }
+                        },
                         series: [scope.course],
                         style: {
                             fontFamily: "RobotoDraft"
@@ -58,6 +78,12 @@ angular.module('appApp')
                             enabled: false
                         }
                     });
+
+                    var printArray = function(value){
+                        var result = '';
+                        for (var i in value) {result += value[i] + '<br />';}
+                        return result;
+                    };
                 }, true);
             }
         };

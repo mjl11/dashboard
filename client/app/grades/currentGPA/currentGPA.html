@@ -1,12 +1,12 @@
 <md-tabs class="md-primary md-hue-1" md-selected="switchData.selectedIndex" md-stretch-tabs="always">
-  <md-tab id="{{data.name}}" 
+  <md-tab id="{{data.name}}"  class="animate-repeat"
         aria-controls="{{data.name}}-content"
         ng-repeat="data in items">
     {{data.name}}th Grade ({{data.gpa}})
   </md-tab>
 </md-tabs>
-<ng-switch on="data.selectedIndex" class="tabpanel-container" ng-show="items">
-    <div class="content" 
+<ng-switch on="data.selectedIndex" class="tabpanel-container animate-switch-container" ng-show="items">
+    <div class="content animate-switch" 
          role="tabpanel" 
          id="{{data.name}}-content" 
          aria-labelledby="grade{{data.name}}" 
@@ -50,6 +50,7 @@
         </div>
         <div class="student-list" flex layout-fill>
           <div 
+               class="animate-show"
                layout="column" 
                layout-align="space-around center" 
                layout-fill ng-show="studentList">

@@ -2,3 +2,42 @@
 	font-weight: bolder;
 	color: #000000;
 }
+
+.animate-show.ng-hide-add.ng-hide-add-active,
+.animate-show.ng-hide-remove.ng-hide-remove-active {
+  -webkit-transition: all ease 0.25s;
+  transition: all ease 0.25s;
+}
+
+.animate-show.ng-hide {
+  line-height: 0;
+  opacity: 0;
+  padding: 0 10px;
+}
+
+.animate-switch-container {
+  position:relative;
+  background:white;
+  height:40px;
+  overflow:hidden;
+}
+
+.animate-switch.ng-animate {
+  -webkit-transition:all cubic-bezier(0.250, 0.250, 0.750, 0.750) 0.5s;
+  transition:all cubic-bezier(0.250, 0.250, 0.750, 0.750) 0.5s;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+
+.animate-switch.ng-leave.ng-leave-active,
+.animate-switch.ng-enter {
+  bottom:-50px;
+}
+.animate-switch.ng-leave,
+.animate-switch.ng-enter.ng-enter-active {
+  bottom:0;
+}
+

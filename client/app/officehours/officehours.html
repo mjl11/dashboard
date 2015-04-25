@@ -9,8 +9,8 @@
     10th Grade
   </md-tab>
 </md-tabs>
-<ng-switch on="data.selectedIndex" class="tabpanel-container" ng-show="items">
-    <div class="content" 
+<ng-switch on="data.selectedIndex" class="tabpanel-container animate-switch-container" ng-show="items">
+    <div class="content animate-switch" 
          role="tabpanel" 
          id="{{data.name}}-content" 
          aria-labelledby="grade{{data.name}}" 
@@ -61,6 +61,7 @@
         </div>
         <div class="student-list" flex layout-fill>
           <div 
+               class="animate-show"
                layout="column" 
                layout-align="space-around center" 
                layout-fill
