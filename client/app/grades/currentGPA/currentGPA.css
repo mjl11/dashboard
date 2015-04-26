@@ -3,6 +3,29 @@
 	color: #000000;
 }
 
+.red-font {
+  color: red;
+}
+
+.green-font {
+  color: green;
+}
+
+.trending-down {
+  width: 24px;
+  height: 24px;
+  color: red; }
+
+.trending-up {
+  width: 24px;
+  height: 24px;
+  color: green; }
+
+.trending-neutral {
+  width: 24px;
+  height: 24px;
+  color: black; }
+
 .animate-show.ng-hide-add.ng-hide-add-active,
 .animate-show.ng-hide-remove.ng-hide-remove-active {
   -webkit-transition: all ease 0.25s;
