@@ -3,7 +3,7 @@
 angular.module('appApp')
     .directive('adaChart', function() {
         return {
-            template: '<div id="adaChart">Oops, chart did not render!</div>',
+            template: '<div id="adaChart"></div>',
             restrict: 'E',
             replace: true,
             scope: {

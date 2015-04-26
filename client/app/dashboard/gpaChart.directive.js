@@ -3,7 +3,7 @@
 angular.module('appApp')
     .directive('gpaChart', function() {
         return {
-            template: '<div id="gpaChart">Oops, chart did not render!</div>',
+            template: '<div id="gpaChart"></div>',
             restrict: 'E',
             replace: true,
             scope: {

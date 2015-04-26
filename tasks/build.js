@@ -100,6 +100,7 @@ gulp.task('replace', function () {
     .pipe(gulp.dest('dist/client'));
 });
 
+/**
 gulp.task('rev', function () {
 
   var rev = new revAll({
@@ -113,8 +114,12 @@ gulp.task('rev', function () {
       return path.basename(file.path, ext) + '.' + hash.substr(0, 8) + ext;
     }
   });
-
   return gulp.src('dist/client/**')
     .pipe(rev.revision())
     .pipe(gulp.dest('dist/client/'));
-});
+});**/
+
+
+
+
+

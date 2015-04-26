@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('appApp')
-    .controller('CurrentGPACtrl', ['StaffService', '$rootScope',
-        function(StaffService, $rootScope) {
+    .controller('CurrentGPACtrl', ['$scope', 'StaffService', '$rootScope',
+        function($scope, StaffService, $rootScope) {
             var vm = this;
             $rootScope.pageTitle = 'Current GPA';
 
@@ -35,7 +35,7 @@ angular.module('appApp')
                 }
             };
 
-            $rootScope.$watch('switchData.selectedIndex', function() {
+            $scope.$watch('switchData.selectedIndex', function() {
                 vm.studentList = null;
             });
 

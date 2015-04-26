@@ -3,7 +3,7 @@
 angular.module('appApp')
     .directive('detentionChart', function() {
         return {
-            template: '<div id="detentionChart">Oops, chart did not render!</div>',
+            template: '<div id="detentionChart"></div>',
             restrict: 'E',
             replace: true,
             scope: {

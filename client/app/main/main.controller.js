@@ -13,11 +13,11 @@ angular.module('appApp')
 
             var currentUser = User.get(function(res) {
                 try {
-                   $scope.userPic = res.google.image.url;
+                   $scope.userPic = res.google.image.url.substring(0, res.google.image.url.length - 6);
                    $scope.displayName = res.google.displayName;
                 }
                 catch (e) {
-                   $scope.userPic = res.google.picture;
+                   $scope.userPic = rres.google.picture.substring(0, res.google.picture.length - 6);
                    $scope.displayName = res.google.name;
                 }
                 $scope.USER_ID = res.email; 
