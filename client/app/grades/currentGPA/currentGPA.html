@@ -1,38 +1,38 @@
 <md-tabs class="md-primary md-hue-1" md-selected="switchData.selectedIndex" md-stretch-tabs="always">
   <md-tab id="{{data.name}}"  class="animate-repeat"
         aria-controls="{{data.name}}-content"
-        ng-repeat="data in items">
+        ng-repeat="data in vm.items">
     {{data.name}}th Grade ({{data.gpa}})
   </md-tab>
 </md-tabs>
-<ng-switch on="data.selectedIndex" class="tabpanel-container animate-switch-container" ng-show="items">
+<ng-switch on="data.selectedIndex" class="tabpanel-container animate-switch-container" ng-show="vm.items">
     <div class="content animate-switch" 
          role="tabpanel" 
          id="{{data.name}}-content" 
          aria-labelledby="grade{{data.name}}" 
          ng-if="$index == switchData.selectedIndex" 
-         ng-repeat="data in items">
+         ng-repeat="data in vm.items">
       <div layout="row" layout-md="column" layout-sm="column" layout-align="space-around start">
         <div class="grades-summary" layout="column" layout-align="space-around center" layout-fill>
           <div class="grades-header" layout="row" layout-align="start center" layout-fill>
             <div flex="70"
-                 ng-click="col1SortOrder('name')"
-                 ng-class="col1OrderBy == 'name' ? 'heavy' : 'pass'">
+                 ng-click="vm.col1SortOrder('name')"
+                 ng-class="vm.col1OrderBy == 'name' ? 'heavy' : 'pass'">
               Advisor
             </div>
             <div flex
-                 ng-click="col1SortOrder('gpa')"
-                 ng-class="col1OrderBy == 'gpa' ? 'heavy' : 'pass'">
+                 ng-click="vm.col1SortOrder('gpa')"
+                 ng-class="vm.col1OrderBy == 'gpa' ? 'heavy' : 'pass'">
               GPA
             </div>
           </div>
           <div class="course-grades" layout-fill>
             <md-content>
               <md-list>
-                <md-item ng-repeat="advisor in data.data | orderBy:col1OrderBy:col1Reverse"
-                         ng-click="selectedAdvisor(advisor)">
+                <md-item ng-repeat="advisor in data.data | orderBy:vm.col1OrderBy:vm.col1Reverse"
+                         ng-click="vm.selectedAdvisor(advisor)">
                   <md-item-content md-ink-ripple="#FFEB3B" 
-                                   md-highlight="isSectionSelected(advisor.name)">
+                                   md-highlight="vm.isSectionSelected(advisor.name)">
                     <div class="md-tile-content" layout="row" layout-align="space-around center">
                       <div flex>
                         {{advisor.name}}
@@ -53,53 +53,70 @@
                class="animate-show"
                layout="column" 
                layout-align="space-around center" 
-               layout-fill ng-show="studentList">
+               layout-fill ng-show="vm.studentList">
             <div class="student-header" layout="row" layout-align="start center" layout-fill>
-              <div flex="20" hide-md hide-sm 
-                   ng-click="sortOrder('student_id')"
-                   ng-class="orderBy == 'student_id' ? 'heavy' : 'pass'">
+              <!-- <div flex="20" hide-md hide-sm 
+                   ng-click="vm.sortOrder('student_id')"
+                   ng-class="vm.orderBy == 'student_id' ? 'heavy' : 'pass'">
                 Student ID
-              </div>
-              <div flex="35" flex-md="45"
-                   ng-click="sortOrder('last_name')"
-                   ng-class="orderBy == 'last_name' ? 'heavy' : 'pass'">
+              </div> -->
+              <div flex="35" flex-md="40"
+                   ng-click="vm.sortOrder('last_name')"
+                   ng-class="vm.orderBy == 'last_name' ? 'heavy' : 'pass'">
                 Student Name
               </div>
               <div flex="15">
               </div>
-              <div flex="15" flex-md="25"
-                   ng-click="sortOrder('ada')"
-                   ng-class="orderBy == 'ada' ? 'heavy' : 'pass'">
+              <div flex="30"
+                   ng-click="vm.sortOrder('ada')"
+                   ng-class="vm.orderBy == 'ada' ? 'heavy' : 'pass'">
                 Attendance
               </div>
-              <div flex="10" 
-                   ng-click="sortOrder('gpa')"
-                   ng-class="orderBy == 'gpa' ? 'heavy' : 'pass'">
+              <div flex="20" 
+                   ng-click="vm.sortOrder('gpa')"
+                   ng-class="vm.orderBy == 'gpa' ? 'heavy' : 'pass'">
                 GPA
               </div>
             </div>
             <div class="student-grades" layout-fill>
               <md-content>
                 <md-list>
-                  <md-item ng-repeat="student in studentList | orderBy:orderBy:reverse" 
-                           ng-click="openProfile(student.illuminate_student_id)">
+                  <md-item ng-repeat="student in vm.studentList | orderBy:vm.orderBy:vm.reverse" 
+                           ng-click="vm.openProfile(student.illuminate_student_id)">
                     <md-item-content>
                       <div class="md-tile-content" layout="row" layout-align="space-around center">
-                        <div flex="20" hide-md hide-sm>
+                        <!-- <div flex="20" hide-md hide-sm>
                           {{student.student_id}}
-                        </div>
-                        <div flex="35">
+                        </div> -->
+                        <div flex="40">
                           {{student.last_name}}, {{student.first_name}}
                           
                         </div>
                         <div flex="15">
                           <md-button class="md-raised md-warn" ng-show="{{student.sped}}">SpEd</md-button>
                         </div>
-                        <div flex="15">
+                        <div flex="25">
                           {{student.ada}}%
                         </div>
                         <div flex="10">
                           {{student.gpa}}
+                          <md-tooltip>
+                            Two cycle change: {{student.gpa - student.previous_gpa | number:2}}
+                          </md-tooltip>
+                        </div>
+                        <div flex="10" hide-sm ng-class="student.gpa - student.previous_gpa < 0 ? 'red-font' : 'green-font'">
+                          <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_trending_down_24px.svg"
+                                  ng-show="student.gpa - student.previous_gpa <= -0.25"
+                                  class="trending-down">
+                          </md-icon>
+                          <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_trending_neutral_24px.svg"
+                                  ng-hide="student.gpa - student.previous_gpa <= -0.25 || student.gpa - student.previous_gpa >= 0.25"
+                                  class="trending-neutral">
+                          </md-icon>
+                          <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_trending_up_24px.svg"
+                                  ng-show="student.gpa - student.previous_gpa >= 0.25"
+                                  class="trending-up">
+                          </md-icon>
                         </div>
                       </div>
                     </md-item-content>
@@ -113,12 +130,12 @@
       </div>
     </div>    
 </ng-switch>
-<div class="loading" ng-hide="items" layout="row" layout-align="center center">
+<div class="loading" ng-hide="vm.items" layout="row" layout-align="center center">
   <div>
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </div>
 </div>
-<div class="loading" ng-show="items === 'Error'" layout="column" layout-align="center center">
+<div class="loading" ng-show="vm.items === 'Error'" layout="column" layout-align="center center">
     <div>
       <img src="bower_components/material-design-icons/notification/2x_web/ic_adb_black_24dp.png" />
     </div>

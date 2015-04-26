@@ -1,65 +1,66 @@
 'use strict';
 
 angular.module('appApp')
-    .controller('CurrentGPACtrl', ['$scope', 'StaffService', '$rootScope',
-        function($scope, StaffService, $rootScope) {
+    .controller('CurrentGPACtrl', ['StaffService', '$rootScope',
+        function(StaffService, $rootScope) {
+            var vm = this;
             $rootScope.pageTitle = 'Current GPA';
 
-            $scope.section = '';
-            $scope.items = '';
+            vm.section = '';
+            vm.items = '';
 
-            $scope.orderBy = 'gpa';
-            $scope.reverse = false;
+            vm.orderBy = 'gpa';
+            vm.reverse = false;
 
-            $scope.col1OrderBy = 'gpa';
-            $scope.col1Reverse = false;
+            vm.col1OrderBy = 'gpa';
+            vm.col1Reverse = false;
 
-            $scope.studentList = null;
+            vm.studentList = null;
 
             StaffService.currentGPA().then(function(response) {
-                $scope.items = response.data[0].school;
+                vm.items = response.data[0].school;
             });
 
-            $scope.selectedAdvisor = function(advisor) {
-                $scope.studentList = advisor.data;
-                $scope.section = advisor.name;
+            vm.selectedAdvisor = function(advisor) {
+                vm.studentList = advisor.data;
+                vm.section = advisor.name;
             };
 
-            $scope.sortOrder = function(newValue) {
-                if (newValue != $scope.orderBy) {
-                    $scope.orderBy = newValue;
-                    $scope.reverse = false;
+            vm.sortOrder = function(newValue) {
+                if (newValue != vm.orderBy) {
+                    vm.orderBy = newValue;
+                    vm.reverse = false;
                 } else {
-                    $scope.reverse = !$scope.reverse;
+                    vm.reverse = !vm.reverse;
                 }
             };
 
-            $scope.$watch('switchData.selectedIndex', function() {
-                $scope.studentList = null;
+            $rootScope.$watch('switchData.selectedIndex', function() {
+                vm.studentList = null;
             });
 
-            $scope.col1SortOrder = function(newValue) {
-                if (newValue != $scope.col1OrderBy) {
-                    $scope.col1OrderBy = newValue;
-                    $scope.col1Reverse = false;
+            vm.col1SortOrder = function(newValue) {
+                if (newValue != vm.col1OrderBy) {
+                    vm.col1OrderBy = newValue;
+                    vm.col1Reverse = false;
                 } else {
-                    $scope.col1Reverse = !$scope.col1Reverse;
+                    vm.col1Reverse = !vm.col1Reverse;
                 }
             };
 
-            $scope.isSectionSelected = function(section) {
-                if ($scope.section === section) {
+            vm.isSectionSelected = function(section) {
+                if (vm.section === section) {
                     return true;
                 } else {
                     return false;
                 }
             };
 
-            $scope.toggleSelectSection = function(section) {
-                $scope.section = section;
+            vm.toggleSelectSection = function(section) {
+                vm.section = section;
             };
 
-            $scope.openProfile = function(student) {
+            vm.openProfile = function(student) {
                 window.open('https://intrinsicschools.illuminateed.com/live/?student_id=' + student + '&page=StudentProfile');
             };
         }

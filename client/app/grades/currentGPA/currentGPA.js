@@ -6,6 +6,7 @@ angular.module('appApp')
             .when('/grades/currentgpa', {
                 templateUrl: 'app/grades/currentGPA/currentGPA.html',
                 controller: 'CurrentGPACtrl',
+                controllerAs: 'vm',
                 authenticate: true,
                 staff: true
             });
