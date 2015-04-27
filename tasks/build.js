@@ -29,7 +29,7 @@ module.exports = function (done) {
     ['clean:dist', 'sass'],
     ['usemin', 'copy:dist'],
     ['replace', 'scripts', 'cssmin'],
-    'rev', 'bower',
+    'rev', 'bower', 'highslide', 'students',
     'clean:finish',
     done);
 };
@@ -58,6 +58,16 @@ gulp.task('bower', function() {
       .pipe(gulp.dest('dist/client/bower_components/'));
 });
 
+gulp.task('highslide', function() {
+    return gulp.src(['client/highslide/**/*'])
+      .pipe(gulp.dest('dist/client/highslide/'));
+});
+
+gulp.task('students', function() {
+    del('dist/client/assets/images/students/**');
+    return gulp.src(['client/assets/images/students/**'])
+      .pipe(gulp.dest('dist/client/assets/images/students'));
+});
 gulp.task('usemin', ['inject'], function () {
   return gulp.src('client/index.html')
     .pipe(plumber())
@@ -100,7 +110,6 @@ gulp.task('replace', function () {
     .pipe(gulp.dest('dist/client'));
 });
 
-/**
 gulp.task('rev', function () {
 
   var rev = new revAll({
@@ -117,7 +126,7 @@ gulp.task('rev', function () {
   return gulp.src('dist/client/**')
     .pipe(rev.revision())
     .pipe(gulp.dest('dist/client/'));
-});**/
+});
 
 
 
