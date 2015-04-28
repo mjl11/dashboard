@@ -51,8 +51,11 @@ angular.module('appApp')
                 getSSH: function() {
                     return $http.get('/api/hc/ssh');
                 },
-                getInfractions: function() {
+                getInfractionsLastWeek: function() {
                     return $http.get('/api/behavior/infraction.by.staff.last.week');
+                },
+                getInfractionsThisWeek: function() {
+                    return $http.get('/api/behavior/infraction.by.staff.this.week');
                 },
                 getNWEA: function(subject) {
                     return $http.get('/api/hc/nwea/progress/' + subject);

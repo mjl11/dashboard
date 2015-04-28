@@ -1,7 +1,11 @@
 <div class="container">
-    <div layout="row" layout-align="center center">
+    <div layout="row" layout-align="center start">
         <div flex hide-sm></div>
         <div flex-md="65" flex-gt-md="50" flex-sm="100">
+          <md-radio-group ng-model="vm.choice">
+            <md-radio-button value="last" class="md-primary">Last Week</md-radio-button>
+            <md-radio-button value="this" class="md-primary">This Week</md-radio-button>
+          </md-radio-group>
           <div class="attendance-header" layout="row" layout-align="start center">
             <div flex="55"
                 ng-click="vm.sortOrder('last_name')"

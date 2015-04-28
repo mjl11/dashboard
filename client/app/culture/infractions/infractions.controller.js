@@ -1,13 +1,20 @@
 'use strict';
 
 angular.module('appApp')
-    .controller('InfractionsCtrl', ['$rootScope', 'StaffService',
-        function($rootScope, StaffService) {
+    .controller('InfractionsCtrl', ['$scope', '$rootScope', 'StaffService',
+        function($scope, $rootScope, StaffService) {
             var vm = this;
-            $rootScope.pageTitle = 'Infractions by Staff (Last Week)';
+            $rootScope.pageTitle = 'Infractions by Staff';
 
-            StaffService.getInfractions().then(function(response) {
+            vm.choice = 'last';
+
+            StaffService.getInfractionsLastWeek().then(function(response) {
                 vm.items = response.data;
+                vm.lastWeek = response.data;
+            });
+
+            StaffService.getInfractionsThisWeek().then(function(response) {
+                vm.thisWeek = response.data;
             });
 
             vm.orderBy = 'last_name';
@@ -21,6 +28,14 @@ angular.module('appApp')
                     vm.reverse = !vm.reverse;
                 }
             };
+
+             $scope.$watch('vm.choice', function() {
+                if(vm.choice == 'last'){
+                    vm.items = vm.lastWeek;
+                }else{
+                    vm.items = vm.thisWeek;
+                }
+           });
 
         }
     ]);
