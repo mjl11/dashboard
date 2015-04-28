@@ -8,6 +8,6 @@ var auth = require('../../auth/auth.service');
 var router = express.Router();
 
 router.get('/', auth.hasRole('staff'), controller.index);
-router.get('/infraction.by.staff.last.week', InfractionByStaffLastWeekController.index);
+router.get('/infraction.by.staff.last.week', auth.hasRole('staff'), InfractionByStaffLastWeekController.index);
 
 module.exports = router;

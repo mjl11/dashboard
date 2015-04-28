@@ -1,0 +1,48 @@
+<div class="container">
+    <div layout="row" layout-align="center center">
+        <div flex hide-sm></div>
+        <div flex-md="65" flex-gt-md="50" flex-sm="100">
+          <div class="attendance-header" layout="row" layout-align="start center">
+            <div flex="55"
+                ng-click="vm.sortOrder('last_name')"
+                ng-class="vm.orderBy == 'last_name' ? 'heavy' : 'pass'">
+              Staff
+            </div>
+            <div flex="25"
+                ng-click="vm.sortOrder('demerits')"
+                ng-class="vm.orderBy == 'demerits' ? 'heavy' : 'pass'">
+              Demerits
+            </div>
+            <div flex="20"
+                ng-click="vm.sortOrder('merits')"
+                ng-class="vm.orderBy == 'merits' ? 'heavy' : 'pass'">
+              Merits
+            </div>
+          </div>
+          <div class="course-grades" layout-fill>
+            <md-content>
+              <md-list>
+                <md-item ng-repeat="staff in vm.items | orderBy:vm.orderBy:vm.reverse">
+                  <md-item-content>
+                    <div class="md-tile-content" layout="row" layout-align="space-around center">
+                      <div flex="60">
+                        {{staff.last_name}}
+                      </div>
+                      <div flex="20">
+                        {{staff.demerits}}
+                      </div>
+                      <div flex="20" >
+                        {{staff.merits}}
+                      </div>
+                    </div>
+                  </md-item-content>
+                  <md-divider ng-if="!$last"></md-divider>
+                </md-item>
+              </md-list>
+            </md-content>
+          </div>
+        </div>
+        <div flex hide-sm></div>
+    </div>
+</div>
+   

@@ -72,6 +72,15 @@ angular.module('appApp')
                     'url': '/attendance/absences'
                 }]
             }, {
+                'name': 'Culture',
+                'sections': [{
+                    'name': 'Infractions by Staff',
+                    'url': '/infractions'
+                }, {
+                    'name': 'Silent Study Hall',
+                    'url': '/ssh'
+                }]
+            },{
                 'name': 'Enrollment',
                 'sections': [{
                     'name': 'Retention YTD',
@@ -92,9 +101,6 @@ angular.module('appApp')
                 }, {
                     'name': 'Office Hours',
                     'url': '/officehours'
-                }, {
-                    'name': 'Silent Study Hall',
-                    'url': '/ssh'
                 }]
             }, {
                 /**

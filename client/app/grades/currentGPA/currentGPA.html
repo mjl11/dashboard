@@ -104,7 +104,7 @@
                             Two cycle change: {{student.gpa - student.previous_gpa | number:2}}
                           </md-tooltip>
                         </div>
-                        <div flex="10" hide-sm ng-class="student.gpa - student.previous_gpa < 0 ? 'red-font' : 'green-font'">
+                        <div flex="10" ng-class="student.gpa - student.previous_gpa < 0 ? 'red-font' : 'green-font'">
                           <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_trending_down_24px.svg"
                                   ng-show="student.gpa - student.previous_gpa <= -0.25"
                                   class="trending-down">
