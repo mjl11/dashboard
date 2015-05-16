@@ -15,7 +15,7 @@ module.exports = function(app) {
     app.use('/api/behavior', require('./api/behavior'));
     app.use('/api/attendance', require('./api/attendance'));
     app.use('/api/students', require('./api/student'));
-    app.use('/api/hc', require('./api/hc'));
+    app.use('/api/hc', require('./api'));
     app.use('/api/grades', require('./api/grades'));
     app.use('/api/users', require('./api/user'));
 

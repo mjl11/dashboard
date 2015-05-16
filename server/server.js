@@ -25,10 +25,6 @@ server.listen(config.port, config.ip, function () {
     app.get('env')
   );
 
-  if (config.env === 'development') {
-    require('fs').writeFileSync('.bangular-refresh', 'done');
-  }
-
 });
 
 module.exports = server;
