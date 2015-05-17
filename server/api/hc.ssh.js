@@ -5,16 +5,16 @@ var _ = require('lodash'),
     
 var Schema = mongoose.Schema;
 
-var hcGPA = mongoose.model('hcGPA', new Schema({}, {
-    collection: 'hc.gpa'
+var hcSSH = mongoose.model('hcSSH', new Schema({}, {
+    collection: 'hc.ssh'
 }));
 
 exports.index = function(req, res) {
-    hcGPA.find(function(err, gpa) {
+    hcSSH.find(function(err, data) {
         if (err) {
             return handleError(res, err);
         }
-        return res.status(200).json(gpa);
+        return res.status(200).json(data);
     });
 };
 

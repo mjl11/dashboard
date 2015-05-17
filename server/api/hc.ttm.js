@@ -2,19 +2,19 @@
 
 var _ = require('lodash'),
     mongoose = require('mongoose');
-    
+
 var Schema = mongoose.Schema;
 
-var hcGPA = mongoose.model('hcGPA', new Schema({}, {
-    collection: 'hc.gpa'
+var hcTTM = mongoose.model('hcTTM', new Schema({}, {
+    collection: 'hc.plt.ttm'
 }));
 
-exports.index = function(req, res) {
-    hcGPA.find(function(err, gpa) {
+exports.index = function (req, res) {
+    hcTTM.find(function (err, ttm) {
         if (err) {
             return handleError(res, err);
         }
-        return res.status(200).json(gpa);
+        return res.status(200).json(ttm);
     });
 };
 

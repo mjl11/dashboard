@@ -2,19 +2,20 @@
 
 var _ = require('lodash'),
     mongoose = require('mongoose');
-    
+
 var Schema = mongoose.Schema;
 
-var hcGPA = mongoose.model('hcGPA', new Schema({}, {
-    collection: 'hc.gpa'
+var Officehours = mongoose.model('Officehours', new Schema({}, {
+    collection: 'officehours'
 }));
 
+// Get list of officehourss
 exports.index = function(req, res) {
-    hcGPA.find(function(err, gpa) {
+    Officehours.find(function(err, officehourss) {
         if (err) {
             return handleError(res, err);
         }
-        return res.status(200).json(gpa);
+        return res.status(200).json(officehourss);
     });
 };
 

@@ -2,19 +2,20 @@
 
 var _ = require('lodash'),
     mongoose = require('mongoose');
-    
+
 var Schema = mongoose.Schema;
 
-var hcGPA = mongoose.model('hcGPA', new Schema({}, {
-    collection: 'hc.gpa'
+var BelowC = mongoose.model('BelowC', new Schema({}, {
+    collection: 'grades.belowc'
 }));
 
+// Get list of grades below c
 exports.index = function(req, res) {
-    hcGPA.find(function(err, gpa) {
+    BelowC.find(function(err, gradess) {
         if (err) {
             return handleError(res, err);
         }
-        return res.status(200).json(gpa);
+        return res.status(200).json(gradess);
     });
 };
 

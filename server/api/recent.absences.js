@@ -5,16 +5,16 @@ var _ = require('lodash'),
     
 var Schema = mongoose.Schema;
 
-var hcGPA = mongoose.model('hcGPA', new Schema({}, {
-    collection: 'hc.gpa'
+var Absences = mongoose.model('Absences', new Schema({}, {
+    collection: 'attendance.recent.absences'
 }));
 
 exports.index = function(req, res) {
-    hcGPA.find(function(err, gpa) {
+    Absences.find(function(err, absences) {
         if (err) {
             return handleError(res, err);
         }
-        return res.status(200).json(gpa);
+        return res.status(200).json(absences);
     });
 };
 

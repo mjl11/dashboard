@@ -2,22 +2,19 @@
 
 var _ = require('lodash'),
     mongoose = require('mongoose');
-    
+
 var Schema = mongoose.Schema;
 
-var hcGPA = mongoose.model('hcGPA', new Schema({}, {
-    collection: 'hc.gpa'
+var Stmath = mongoose.model('Stmath', new Schema({}, {
+    collection: 'plt.stmath'
 }));
 
+// Get list of stmaths
 exports.index = function(req, res) {
-    hcGPA.find(function(err, gpa) {
+    Stmath.find(function(err, stmaths) {
         if (err) {
             return handleError(res, err);
         }
-        return res.status(200).json(gpa);
+        return res.status(200).json(stmaths);
     });
 };
-
-function handleError(res, err) {
-    return res.send(500, err);
-}

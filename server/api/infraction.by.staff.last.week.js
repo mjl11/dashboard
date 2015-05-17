@@ -2,19 +2,19 @@
 
 var _ = require('lodash'),
     mongoose = require('mongoose');
-    
+
 var Schema = mongoose.Schema;
 
-var hcGPA = mongoose.model('hcGPA', new Schema({}, {
-    collection: 'hc.gpa'
+var InfractionByStaffLastWeek = mongoose.model('InfractionByStaffLastWeek', new Schema({}, {
+    collection: 'infractions.by.staff.last.week'
 }));
 
 exports.index = function(req, res) {
-    hcGPA.find(function(err, gpa) {
+    InfractionByStaffLastWeek.find(function(err, infractions) {
         if (err) {
             return handleError(res, err);
         }
-        return res.status(200).json(gpa);
+        return res.status(200).json(infractions);
     });
 };
 
