@@ -1,7 +1,13 @@
 'use strict';
 
-var _ = require('lodash');
-var hcAr = require('./hc.ar.model');
+var _ = require('lodash'),
+    mongoose = require('mongoose');
+    
+var Schema = mongoose.Schema;
+    
+var hcAr = mongoose.model('hcAr', new Schema({}, {
+    collection: 'hc.plt.ar'
+}));
 
 exports.index = function(req, res) {
     hcAr.find(function(err, ar) {

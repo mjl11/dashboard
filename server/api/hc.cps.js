@@ -1,7 +1,13 @@
 'use strict';
 
-var _ = require('lodash');
-var hcCPS = require('./hc.cps.model');
+var _ = require('lodash'),
+    mongoose = require('mongoose');
+
+var Schema = mongoose.Schema;
+
+var hcCPS = mongoose.model('hcCPS', new Schema({}, {
+    collection: 'hc.cps.ontrack'
+}));
 
 exports.index = function(req, res) {
     hcCPS.find(function(err, cps) {

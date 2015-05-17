@@ -1,9 +1,13 @@
 'use strict';
 
-var _ = require('lodash');
-var hcGPA = require('./hc.gpa.model');
+var _ = require('lodash'),
+    mongoose = require('mongoose');
+    
+var Schema = mongoose.Schema;
+var hcGPA = mongoose.model('hcGPA', new Schema({}, {
+    collection: 'hc.gpa'
+}));
 
-// Get overall GPA scores
 exports.index = function(req, res) {
     hcGPA.find(function(err, gpa) {
         if (err) {

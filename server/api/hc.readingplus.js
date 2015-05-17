@@ -1,7 +1,13 @@
 'use strict';
 
-var _ = require('lodash');
-var hcReadingPlus = require('./hc.readingplus.model');
+var _ = require('lodash'),
+    mongoose = require('mongoose');
+
+var Schema = mongoose.Schema;
+
+var hcReadingPlus = mongoose.model('hcReadingPlus', new Schema({}, {
+    collection: 'hc.plt.readingplus'
+}));
 
 exports.index = function(req, res) {
     hcReadingPlus.find(function(err, rp) {
