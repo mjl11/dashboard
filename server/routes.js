@@ -6,7 +6,7 @@
 
 var errors = require('./components/errors');
 
-module.exports = function(app) {
+module.exports = function (app) {
 
     app.use('/api', require('./api'));
     app.use('/api/users', require('./api/user'));
@@ -18,7 +18,7 @@ module.exports = function(app) {
 
     // All other routes should redirect to the index.html
     app.route('/*')
-        .get(function(req, res) {
-            res.sendfile(app.get('appPath') + '/index.html');
-        });
+        .get(function (req, res) {
+        res.sendfile(app.get('appPath') + '/index.html');
+    });
 };

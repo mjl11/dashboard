@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('appApp', [
@@ -9,32 +9,32 @@
         'ngAnimate',
         'ngMaterial'
     ])
-        .config(function($routeProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
-            $routeProvider
-                .otherwise({
-                    redirectTo: '/'
-                });
+        .config(function ($routeProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
+        $routeProvider
+            .otherwise({
+            redirectTo: '/'
+        });
 
-            $locationProvider.html5Mode(true);
-            $httpProvider.interceptors.push('authInterceptor');
+        $locationProvider.html5Mode(true);
+        $httpProvider.interceptors.push('authInterceptor');
 
-            $mdThemingProvider.theme('default')
-                .primaryPalette('green', {
-                    'default': '500',
-                    'hue-1': '300'
-                })
-                .accentPalette('light-blue', {
-                    'default': '400'
-                })
-                .warnPalette('yellow');
-
+        $mdThemingProvider.theme('default')
+            .primaryPalette('green', {
+            'default': '500',
+            'hue-1': '300'
         })
+            .accentPalette('light-blue', {
+            'default': '400'
+        })
+            .warnPalette('yellow');
 
-    .factory('authInterceptor', ['$rootScope', '$q', '$cookieStore', '$location',
-        function($rootScope, $q, $cookieStore, $location) {
+    })
+
+        .factory('authInterceptor', ['$rootScope', '$q', '$cookieStore', '$location',
+        function ($rootScope, $q, $cookieStore, $location) {
             return {
                 // Add authorization token to headers
-                request: function(config) {
+                request: function (config) {
                     config.headers = config.headers || {};
                     if ($cookieStore.get('token')) {
                         config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
@@ -43,7 +43,7 @@
                 },
 
                 // Intercept 401s and redirect you to login
-                responseError: function(response) {
+                responseError: function (response) {
                     if (response.status === 401) {
                         $location.path('/login');
                         // remove any stale tokens
@@ -57,10 +57,10 @@
         }
     ])
 
-    .run(function($rootScope, $location, Auth, $window) {
+        .run(function ($rootScope, $location, Auth, $window) {
         // Redirect to login if route requires auth and you're not logged in
-        $rootScope.$on('$routeChangeStart', function(event, next) {
-            Auth.isLoggedInAsync(function(loggedIn) {
+        $rootScope.$on('$routeChangeStart', function (event, next) {
+            Auth.isLoggedInAsync(function (loggedIn) {
                 if (next.authenticate && !loggedIn) {
                     $location.path('/login');
                 } else if (next.staff && Auth.isStudent()) {
@@ -69,7 +69,7 @@
             });
         });
         // Tracks page views for Google Analytics
-        $rootScope.$on('$routeChangeSuccess', function() {
+        $rootScope.$on('$routeChangeSuccess', function () {
             $window._gaq.push(['_trackPageview', $location.path()]);
         });
     });
