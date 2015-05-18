@@ -19,28 +19,6 @@ angular.module('appApp')
         },
 
         /**
-         * Create a new user
-         *
-         * @param  {Object}   user     - user info
-         * @param  {Function} callback - optional
-         * @return {Promise}
-         */
-        createUser: function (user, callback) {
-            var cb = callback || angular.noop;
-
-            return User.save(user,
-                function (data) {
-                    $cookieStore.put('token', data.token);
-                    currentUser = User.get();
-                    return cb(user);
-                },
-                function (err) {
-                    this.logout();
-                    return cb(err);
-                }.bind(this)).$promise;
-        },
-
-        /**
          * Gets all available info on authenticated user
          *
          * @return {Object} user
