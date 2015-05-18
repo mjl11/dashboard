@@ -4,7 +4,6 @@
  * Inject css/js files in index.html
  */
 var gulp = require('gulp');
-var angularFilesort = require('gulp-angular-filesort');
 var bowerFiles = require('main-bower-files');
 var inject = require('gulp-inject');
 
