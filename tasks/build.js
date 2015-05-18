@@ -3,7 +3,6 @@
 /**
  * Build task
  */
-
 var gulp                 = require('gulp');
 var path                 = require('path');
 var sq                   = require('streamqueue');

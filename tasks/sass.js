@@ -3,14 +3,14 @@
 /**
  * Compile sass
  */
-
-var gulp    = require('gulp');
-var plumber = require('gulp-plumber');
-var sass    = require('gulp-sass');
+var gulp = require('gulp'),
+  sass = require('gulp-sass'),
+  notify = require('gulp-notify');
 
 module.exports = function () {
-  return gulp.src('client/styles/app.scss')
-    .pipe(plumber())
-    .pipe(sass())
-    .pipe(gulp.dest('client/styles/css'));
+  return gulp.src('./client/**/*.scss')
+    .pipe(sass({
+    errLogToConsole: true
+  }))
+    .pipe(gulp.dest('./client'));
 };
