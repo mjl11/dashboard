@@ -28,7 +28,7 @@ module.exports = function (done) {
     ['clean:dist', 'sass'],
     ['usemin', 'copy:dist'],
     ['replace', 'scripts', 'cssmin'],
-    'rev', 'bower', 'highslide', 'students',
+    'rev', 'bower', 'highslide',
     'clean:finish',
     done);
 };
@@ -62,11 +62,6 @@ gulp.task('highslide', function() {
       .pipe(gulp.dest('dist/client/highslide/'));
 });
 
-gulp.task('students', function() {
-    del('dist/client/assets/images/students/**');
-    return gulp.src(['client/assets/images/students/**'])
-      .pipe(gulp.dest('dist/client/assets/images/students'));
-});
 gulp.task('usemin', ['inject'], function () {
   return gulp.src('client/index.html')
     .pipe(plumber())

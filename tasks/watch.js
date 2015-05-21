@@ -9,9 +9,7 @@ var   gulp = require('gulp'),
     	livereload = require('gulp-livereload'),
       watch = require('gulp-watch'),
       inject = require('./inject.js'),
-      plumber = require('gulp-plumber'),
-      sass = require('./sass.js'),
-      bowerFiles = require('main-bower-files');
+      sass = require('./sass.js');
 
 var toInject = require('./config/filesToInject');
 
