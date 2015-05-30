@@ -54,6 +54,7 @@
 .top-gpa md-card-footer {
 	background: #FFEB3B;
 	order: 2;
+	padding: 0 0 0 16px;
 }
 
 .top-gpa md-card-content h2 {
@@ -75,8 +76,4 @@
 	font-weight: none;
 	font-size: 20px;
 	margin: 0;
-}
-
-.nav-right {
-	float: right;
 }
