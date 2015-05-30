@@ -22,3 +22,61 @@
 	margin-right: 5px;
 }
 
+.on-track md-card-content {
+	height: 150px;
+	background: #B3E5FC;
+}
+
+.on-track md-card-footer {
+	background: #03A9F4;
+	order: 2;
+}
+
+.on-track md-card-content h1 {
+	text-align: center;
+	font-weight: none;
+	font-size: 60px;
+	margin: 0;
+}
+
+.on-track md-card-content p {
+	text-align: center;
+	font-weight: none;
+	font-size: 20px;
+	margin: 0;
+}
+
+.top-gpa md-card-content {
+	height: 150px;
+	background: #FFF59D;
+}
+
+.top-gpa md-card-footer {
+	background: #FFEB3B;
+	order: 2;
+}
+
+.top-gpa md-card-content h2 {
+	text-align: center;
+	font-weight: none;
+	font-size: 30px;
+	margin: 0;
+}
+
+.top-gpa md-card-content h1 {
+	text-align: center;
+	font-weight: none;
+	font-size: 50px;
+	margin: 0;
+}
+
+.top-gpa md-card-content p {
+	text-align: center;
+	font-weight: none;
+	font-size: 20px;
+	margin: 0;
+}
+
+.nav-right {
+	float: right;
+}

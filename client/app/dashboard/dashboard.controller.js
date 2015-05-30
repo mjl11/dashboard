@@ -4,6 +4,8 @@ angular.module('appApp')
     .controller('DashboardCtrl', ['$scope', '$rootScope', 'StaffService',
         function($scope, $rootScope, StaffService) {
             $rootScope.pageTitle = 'Dashboard';
+            $scope.topGPAWidget = [];
+            $scope.selectedGradeLevel = 0;
 
             StaffService.getGPA().then(function(response) {
                 $scope.items = response.data[0].school;
@@ -16,6 +18,44 @@ angular.module('appApp')
 
             StaffService.getBehavior().then(function(response) {
                 $scope.behavior = response.data;
+            });
+
+            StaffService.currentGPA().then(function(response) {
+                $scope.currentGPA = response.data[0].school;
+
+                for (var object in $scope.currentGPA) {
+                    var gradeLevel = $scope.currentGPA[object]["name"];
+                    var advisor = "";
+                    var topGPA = 0;
+
+                    for (var advisory in $scope.currentGPA[object]["data"]) {
+                        if ($scope.currentGPA[object]["data"][advisory]["gpa"] > topGPA){
+                            topGPA = $scope.currentGPA[object]["data"][advisory]["gpa"];
+                            advisor = $scope.currentGPA[object]["data"][advisory]["name"];
+                        }
+                    }
+
+                    if (gradeLevel == 7){
+                        var temp = {};
+                        temp.grade = "7th Grade";
+                        temp.gpa = topGPA;
+                        temp.advisor = advisor;
+                        $scope.topGPAWidget.push(temp);
+                    }else if (gradeLevel == 9){
+                        var temp = {};
+                        temp.grade = "9th Grade";
+                        temp.gpa = topGPA;
+                        temp.advisor = advisor;
+                        $scope.topGPAWidget.push(temp);
+                    }else {
+                        var temp = {};
+                        temp.grade = "10th Grade";
+                        temp.gpa = topGPA;
+                        temp.advisor = advisor;
+                        $scope.topGPAWidget.push(temp);
+                    }
+                    
+                }
             });
 
             StaffService.getADA().then(function(response) {
@@ -54,5 +94,11 @@ angular.module('appApp')
                     data: $scope.adaItems[1].data[0].data
                 }, ];
             });
+
+            $scope.changeGradeLevel = function(){
+                $scope.selectedGradeLevel++;
+                if ($scope.selectedGradeLevel > 2)
+                    $scope.selectedGradeLevel = 0;
+            }
         }
     ]);
