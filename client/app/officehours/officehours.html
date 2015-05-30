@@ -67,12 +67,12 @@
                layout-fill
                ng-show="studentList">
             <div class="student-header" layout="row" layout-align="start center" layout-fill>
-              <div flex="18" hide-md hide-sm 
+              <!-- <div flex="18" hide-md hide-sm 
                    ng-click="sortOrder('student_id')"
                    ng-class="orderBy == 'student_id' ? 'heavy' : 'pass'">
                 Student ID
-              </div>
-              <div flex="35" ng-click="sortOrder('last_name')"
+              </div> -->
+              <div flex="45" ng-click="sortOrder('last_name')"
                    ng-class="orderBy == 'last_name' ? 'heavy' : 'pass'">
                 Student Name
               </div>
@@ -94,14 +94,14 @@
                            ng-click="openProfile(student.illuminate_student_id)">
                     <md-item-content>
                       <div class="md-tile-content" layout="row" layout-align="space-around center">
-                        <div flex="18" hide-md hide-sm>
+                        <!-- <div flex="18" hide-md hide-sm>
                           {{student.student_id}}
-                        </div>
-                        <div flex="40">
+                        </div> -->
+                        <div flex="50">
                           {{student.last_name}}, {{student.first_name}}
                         </div>
                         <div flex="15">
-                          <md-button class="md-raised md-warn" ng-show="{{student.sped}}">SpEd</md-button>
+                          <span class="sped-label" ng-show="{{student.sped}}">SpEd</span>
                         </div>
                         <div flex="15">
                           {{student.attended}}
