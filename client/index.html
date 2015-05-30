@@ -30,14 +30,15 @@
     <link rel="stylesheet" href="app/app.css">
     <link rel="stylesheet" href="app/attendance/attendance.css">
     <link rel="stylesheet" href="app/dashboard/dashboard.css">
+    <link rel="stylesheet" href="app/namegame/namegame.css">
     <link rel="stylesheet" href="app/thinkThroughMath/thinkThroughMath.css">
     <link rel="stylesheet" href="app/account/login/login.css">
     <link rel="stylesheet" href="app/culture/infractions/infractions.css">
     <link rel="stylesheet" href="app/grades/belowc/belowc.css">
     <link rel="stylesheet" href="app/grades/currentGPA/currentGPA.css">
     <link rel="stylesheet" href="app/grades/histogram/histogram.css">
-    <link rel="stylesheet" href="app/students/stuofficehours/stuofficehours.css">
     <link rel="stylesheet" href="app/students/stuBehavior/stuBehavior.css">
+    <link rel="stylesheet" href="app/students/stuofficehours/stuofficehours.css">
     <!-- endinject -->
     <!-- endbuild -->
     <script>
@@ -75,9 +76,7 @@
         <md-toolbar md-scroll-shrink>
           <div class="md-toolbar-tools" flex layout="column">
             <div layout="row" layout-align="start center" flex>
-              <md-button class="menu-icon" aria-label="Toggle Menu" ng-click="toggleLeft()" ng-show="showMenu">
-                <img src='bower_components/material-design-icons/navigation/1x_web/ic_menu_white_24dp.png' />
-              </md-button>
+              <i class="material-icons" ng-click="toggleLeft()" ng-show="showMenu">menu</i>
               <h1 class="md-toolbar-tools" flex>{{pageTitle}}</h1>
               <md-button class="md-raised md-warn">Beta</md-button>
             </div>
@@ -106,8 +105,8 @@
       <!-- endinject -->
       <!-- inject:js -->
       <script src="app/app.js"></script>
-      <script src="app/StudentsService/StudentsService.service.js"></script>
       <script src="app/StaffService/staffService.service.js"></script>
+      <script src="app/StudentsService/StudentsService.service.js"></script>
       <script src="app/acceleratedReader/acceleratedReader.controller.js"></script>
       <script src="app/acceleratedReader/acceleratedReader.js"></script>
       <script src="app/acceleratedReader/acceleratedReaderDetailed.controller.js"></script>
@@ -159,10 +158,10 @@
       <script src="app/grades/histogram/gradesHistogram.directive.js"></script>
       <script src="app/grades/histogram/histogram.controller.js"></script>
       <script src="app/grades/histogram/histogram.js"></script>
-      <script src="app/students/stuofficehours/stuofficehours.controller.js"></script>
-      <script src="app/students/stuofficehours/stuofficehours.js"></script>
       <script src="app/students/stuBehavior/stuBehavior.controller.js"></script>
       <script src="app/students/stuBehavior/stuBehavior.js"></script>
+      <script src="app/students/stuofficehours/stuofficehours.controller.js"></script>
+      <script src="app/students/stuofficehours/stuofficehours.js"></script>
       <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/user.service.js"></script>
       <script src="components/mongoose-error/mongoose-error.directive.js"></script>

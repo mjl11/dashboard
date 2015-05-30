@@ -68,11 +68,6 @@ body {
 .menu-item.menu-title:hover, .menu-item.menu-title.active {
   color: #1976d2; }
 
-.menu-icon {
-  background: none;
-  border: none;
-  margin-top: 5px; }
-
 .classbtn {
   margin-bottom: 15px; }
 
