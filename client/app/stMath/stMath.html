@@ -24,7 +24,7 @@
 				Points
 			</div>
 		</div>
-	    <md-content layout-fill>
+	    <md-content layout-fill ng-show="vm.selectedSection">
 	      <md-list>
 	        <md-item ng-repeat="student in vm.selectedSection"
 	                 ng-click="vm.openProfile(student.illuminate_student_id)">

@@ -69,3 +69,8 @@
   padding: 6px 8px 6px 8px;
 }
 
+md-tooltip .md-content {
+  min-height: 100px;
+  font-size: 14px;
+}
+
