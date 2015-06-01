@@ -53,6 +53,9 @@ angular.module('appApp')
                     'name': 'Dashboard',
                     'url': '/'
                 }, {
+                    'name': 'Kudos',
+                    'url': '/kudos'
+                },{
                     'name': 'Name Game',
                     'url': '/guess'
                 }]
