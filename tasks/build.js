@@ -18,8 +18,8 @@ var concat               = require('gulp-concat');
 var ngAnnotate           = require('gulp-ng-annotate');
 var uglify               = require('gulp-uglify');
 var replace              = require('gulp-replace');
-var revAll               = require('gulp-rev-all');
-var revToExclude         = require('./config/revFilesToExclude');
+//var revAll               = require('gulp-rev-all');
+//var revToExclude         = require('./config/revFilesToExclude');
 
 var toDelete = [];
 
@@ -28,7 +28,7 @@ module.exports = function (done) {
     ['clean:dist', 'sass'],
     ['usemin', 'copy:dist'],
     ['replace', 'scripts', 'cssmin'],
-    'rev', 'bower', 'highslide',
+     'bower', 'highslide',
     'clean:finish',
     done);
 };
@@ -39,8 +39,7 @@ gulp.task('clean:dist', function (done) {
 
 gulp.task('clean:finish', function (done) {
   del([
-    '.tmp/**',
-    'dist/client/app.{css,js}'
+    '.tmp/**'
   ].concat(toDelete), done);
 });
 
@@ -76,6 +75,7 @@ gulp.task('cssmin', function () {
     .pipe(gulp.dest('dist/client/'));
 });
 
+
 gulp.task('scripts', function () {
   var views = gulp.src('client/components/**/*.html')
     .pipe(angularTemplatecache({
@@ -105,7 +105,6 @@ gulp.task('replace', function () {
 });
 
 gulp.task('rev', function () {
-
   var rev = new revAll({
     transformFilename: function (file, hash) {
       var filename = path.basename(file.path);
