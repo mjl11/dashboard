@@ -52,9 +52,6 @@ angular.module('appApp')
                 'sections': [{
                     'name': 'Dashboard',
                     'url': '/'
-                }, {
-                    'name': 'Kudos',
-                    'url': '/kudos'
                 },{
                     'name': 'Name Game',
                     'url': '/guess'
