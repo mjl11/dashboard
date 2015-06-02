@@ -6,10 +6,10 @@ angular.module('appApp')
 
             return {
                 getBehavior: function(email) {
-                    return $http.get('/api/students/behavior/' + email);
+                    return $http.get('/api/student/behavior/' + email);
                 },
                 getOfficeHours: function(email) {
-                    return $http.get('/api/students/officehours/' + email);
+                    return $http.get('/api/student/officehours/' + email);
                 }
             };
         }
