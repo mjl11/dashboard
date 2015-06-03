@@ -1,0 +1,52 @@
+<md-dialog>
+  <form>
+  <md-dialog-content>
+    <md-subheader>Say "Thank you!" to a fellow teammate</md-subheader>
+    <div>
+      <form ng-submit="$event.preventDefault()">
+        <div layout="row">
+          <md-icon 
+						md-svg-icon="bower_components/material-design-icons/social/svg/production/ic_person_outline_48px.svg"
+            flex="10">
+					</md-icon>
+          <md-autocomplete
+              ng-disabled="ctrl.isDisabled"
+              md-no-cache="ctrl.noCache"
+              md-selected-item="ctrl.selectedItem"
+              md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+              md-search-text="ctrl.searchText"
+              md-selected-item-change="ctrl.selectedItemChange(item)"
+              md-items="item in ctrl.querySearch(ctrl.searchText)"
+              md-item-text="item.display"
+              md-min-length="0"
+              placeholder="Name"
+              required
+              flex>
+            <md-item-template>
+              <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+            </md-item-template>
+            <md-not-found>
+              No matches found for "{{ctrl.searchText}}".
+            </md-not-found>
+          </md-autocomplete>
+        </div>
+        <div layout="row">
+        <md-icon 
+						md-svg-icon="bower_components/material-design-icons/communication/svg/production/ic_chat_48px.svg"
+            flex="10">
+					</md-icon>
+        <md-input-container flex>
+          <label>Tell them why what they did was awesome!</p></label>
+          <textarea required></textarea>
+        </md-input-container>
+        </div>
+    </form>
+    </div>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <md-button ng-click="answer('useful')" class="md-primary">
+      Submit
+    </md-button>
+  </div>
+  </form>
+</md-dialog>

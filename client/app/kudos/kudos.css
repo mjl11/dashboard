@@ -2,3 +2,7 @@
   background: #FFFFFF;
   margin-top: 15px;
 }
+
+md-dialog {
+  min-width: 500px;
+}
