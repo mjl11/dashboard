@@ -33,7 +33,10 @@ angular.module('appApp')
         }
         
         vm.addKudos = function() {
-            $http.post('/api/kudos', {});
+            $http.post('/api/kudos', {
+                kudosTo: vm.kudosTo,
+                kudosFrom: "Marcos A",
+                kudosContent: vm.kudosContent});
         };
 
     }

@@ -25,6 +25,7 @@ exports.index = function (req, res) {
 exports.create = function(req, res) {
     kudos.create(req.body, function(err, kudosResp) {
         if(err) { return handleError(res, err); }
+        console.log(req.body);
         return res.json(201, kudosResp);
     });
 };
