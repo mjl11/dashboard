@@ -71,6 +71,9 @@ angular.module('appApp')
                 },
                 getSTMath: function() {
                     return $http.get('/api/stmath');
+                },
+                postKudos: function() {
+                    
                 }
             };
         }
