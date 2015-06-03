@@ -4,20 +4,36 @@ angular.module('appApp')
     .controller('KudosCtrl', ['$rootScope', '$http',  '$mdDialog',
     function ($rootScope, $http, $mdDialog) {
         var vm = this;
-        vm.posts;
+        vm.posts = "";
+        vm.kudosTo;
+        vm.kudosContent;
         $rootScope.pageTitle = 'Intrinsic Kudos';
 
         vm.newKudos = function (ev) {
             $mdDialog.show({
-                controller: KudosFormController,
+                controller: KudosFormCtrl,
                 templateUrl: 'app/kudos/newKudos.html',
                 targetEvent: ev,
-            })
-                .then(function (answer) {
-                vm.alert = 'You said the information was "' + answer + '".';
-            }, function () {
-                    vm.alert = 'You cancelled the dialog.';
-                });
+                clickOutsideToClose: true
+            })};
+        
+        vm.submit = function() {
+            
+          console.log("Submitted");  
+          
+        };
+        
+        function KudosFormCtrl(scope, $mdDialog) {
+            scope.submit = function() {
+              vm.kudosTo = scope.kudosTo;
+              vm.kudosContent = scope.kudosContent;
+              $mdDialog.hide();
+              vm.addKudos();
+            }
+        }
+        
+        vm.addKudos = function() {
+            
         };
     
         /**
@@ -47,15 +63,3 @@ angular.module('appApp')
         */
     }
 ]);
-
-function KudosFormController($scope, $mdDialog) {
-    $scope.hide = function () {
-        $mdDialog.hide();
-    };
-    $scope.cancel = function () {
-        $mdDialog.cancel();
-    };
-    $scope.answer = function (answer) {
-        $mdDialog.hide(answer);
-    };
-}
