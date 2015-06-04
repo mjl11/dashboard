@@ -25,7 +25,7 @@ angular.module('appApp')
                             }
                         },
                         subtitle: {
-                            text: "Fall to Winter"
+                            text: "Fall to Spring"
                         },
                         colors: ['#4CAF50', '#388E3C'],
                         xAxis: {

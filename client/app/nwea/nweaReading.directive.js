@@ -27,7 +27,7 @@ angular.module('appApp')
                         subtitle: {
                             text: "Section: " + scope.items.section
                         },
-                        colors: ['#81C784', '#388E3C'],
+                        colors: ['#81C784', '#388E3C', '#000000'],
                         xAxis: {
                             categories: scope.items.categories
                         },
