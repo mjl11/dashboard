@@ -73,6 +73,5 @@ angular.module('appApp')
         function isInArray(value, array) {
           return array.indexOf(value) > -1;
         }
-
     }
 ]);
