@@ -77,6 +77,9 @@ angular.module('appApp')
                 },
                 getTopKudos: function() {
                     return $http.get('/api/kudos/top');
+                },
+                postKudos: function(req){
+                    $http.post('/api/kudos', req);
                 }
             };
         }

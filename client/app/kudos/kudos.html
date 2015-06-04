@@ -1,7 +1,10 @@
 <div layout="column" layout-align="start center">
   <div layout="row" layout-fill>
     <div flex="10">
-     <md-button class="md-raised md-warn md-fab addButton" ng-click="vm.newKudos($event)">
+     <md-button 
+       aria-label="Add kudos"
+       class="md-raised md-warn md-fab addButton" 
+       ng-click="vm.newKudos($event)">
       <md-icon md-svg-icon="bower_components/material-design-icons/content/svg/production/ic_add_48px.svg"></md-icon>
     </md-button>
     </div>

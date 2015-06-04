@@ -24,13 +24,14 @@ angular.module('appApp')
         
         function KudosFormCtrl(scope, $mdDialog) {
             scope.submit = function() {
-              vm.kudosTo = scope.kudosTo;
-              vm.kudosContent = scope.kudosContent;
+                vm.kudosTo = scope.kudosTo;
+                vm.kudosContent = scope.kudosContent;
+                vm.kudosFrom = Auth.getCurrentUser().name;
               $mdDialog.hide();
               if(typeof(vm.kudosTo) != "undefined" 
                 && typeof(vm.kudosContent) != "undefined" 
                 && typeof(vm.kudosFrom) != "undefined"){
-
+                    
                 vm.addKudos();
                 
               }
@@ -38,7 +39,7 @@ angular.module('appApp')
         }
         
         vm.addKudos = function() {
-            $http.post('/api/kudos', {
+            StaffService.postKudos({
                 kudosTo: vm.kudosTo,
                 kudosFrom: vm.kudosFrom,
                 kudosContent: vm.kudosContent,
