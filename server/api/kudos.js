@@ -29,6 +29,10 @@ exports.create = function (req, res) {
         return res.json(201, kudosResp);
     });
 };
+/**
+exports.put = function (req, res) {
+  KudosSchema.update({_id: req.params.id}, {likes: req.body.likes});  
+}; */
 
 function handleError(res, err) {
     return res.send(500, err);

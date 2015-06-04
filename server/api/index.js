@@ -38,5 +38,6 @@ router.get('/students/random', auth.hasRole('staff'), require('./namegame').inde
 
 router.get('/kudos', auth.hasRole('staff'), require('./kudos').index);
 router.post('/kudos', auth.hasRole('staff'), require('./kudos').create);
+//router.put('/kudos/:id', auth.hasRole('staff'), require('./kudos').put);
 
 module.exports = router;

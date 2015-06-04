@@ -34,7 +34,7 @@ angular.module('appApp')
                 vm.addKudos();
                 
               }
-            }
+            };
         }
         
         vm.addKudos = function() {
@@ -48,12 +48,21 @@ angular.module('appApp')
             });
         };
         
-        vm.like = function() {
+        vm.like = function(req) {
+            var likes = req.likes;
+            likes.push(Auth.getCurrentUser().email);
+            $http.update('/api/kudos/' + req._id, {
+                _id: req._id,
+                likes: likes
+            });
           $mdToast.show(
                 $mdToast.simple()
                 .position('bottom left')
                 .content('Like!')
             );
+          StaffService.getKudos().then(function(response) {
+                vm.items = response.data;
+            });
         };
 
     }
