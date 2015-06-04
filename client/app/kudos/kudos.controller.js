@@ -1,13 +1,18 @@
 'use strict';
 
 angular.module('appApp')
-    .controller('KudosCtrl', ['$rootScope', '$http',  '$mdDialog',
-    function ($rootScope, $http, $mdDialog) {
+    .controller('KudosCtrl', ['$rootScope', '$http',  '$mdDialog', 'Auth', 'StaffService', '$mdToast',
+    function ($rootScope, $http, $mdDialog, Auth, StaffService, $mdToast) {
         var vm = this;
-        vm.posts = "";
-        vm.kudosTo;
-        vm.kudosContent;
+        vm.items = "";
+        vm.kudosTo = "";
+        vm.kudosFrom = Auth.getCurrentUser().name;
+        vm.kudosContent = "";
         $rootScope.pageTitle = 'Intrinsic Kudos';
+        
+        StaffService.getKudos().then(function(response) {
+                vm.items = response.data;
+            });
 
         vm.newKudos = function (ev) {
             $mdDialog.show({
@@ -17,26 +22,38 @@ angular.module('appApp')
                 clickOutsideToClose: true
             })};
         
-        vm.submit = function() {
-            
-          console.log("Submitted");  
-          
-        };
-        
         function KudosFormCtrl(scope, $mdDialog) {
             scope.submit = function() {
               vm.kudosTo = scope.kudosTo;
               vm.kudosContent = scope.kudosContent;
               $mdDialog.hide();
-              vm.addKudos();
+              if(typeof(vm.kudosTo) != "undefined" 
+                && typeof(vm.kudosContent) != "undefined" 
+                && typeof(vm.kudosFrom) != "undefined"){
+
+                vm.addKudos();
+                
+              }
             }
         }
         
         vm.addKudos = function() {
             $http.post('/api/kudos', {
                 kudosTo: vm.kudosTo,
-                kudosFrom: "Marcos A",
-                kudosContent: vm.kudosContent});
+                kudosFrom: vm.kudosFrom,
+                kudosContent: vm.kudosContent,
+                likes: []});
+            StaffService.getKudos().then(function(response) {
+                vm.items = response.data;
+            });
+        };
+        
+        vm.like = function() {
+          $mdToast.show(
+                $mdToast.simple()
+                .position('bottom left')
+                .content('Like!')
+            );
         };
 
     }

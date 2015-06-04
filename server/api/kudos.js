@@ -1,30 +1,30 @@
 'use strict';
 
 var _ = require('lodash'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
-var Schema = mongoose.Schema;
-
-var kudos = mongoose.model('kudos', new Schema({}, {
-        kudosTo: String,
-        kudosFrom: String,
-        kudosContent: String
-    }, {
+var KudosSchema = mongoose.model('kudos', new Schema({
+    kudosTo: String,
+    kudosFrom: String,
+    kudosContent: String,
+    likes: []
+}, {
         collection: 'kudos'
     }));
 
 exports.index = function (req, res) {
-    kudos.find(function (err, kudos) {
+    KudosSchema.find(function (err, kudos) {
         if (err) {
             return handleError(res, err);
         }
         return res.status(200).json(kudos);
-    });
+    }).sort({$natural: -1});
 };
 
-exports.create = function(req, res) {
-    kudos.create(req.body, function(err, kudosResp) {
-        if(err) { return handleError(res, err); }
+exports.create = function (req, res) {
+    KudosSchema.create(req.body, function (err, kudosResp) {
+        if (err) { return handleError(res, err); }
         console.log(req.body);
         return res.json(201, kudosResp);
     });

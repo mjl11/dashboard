@@ -6,3 +6,12 @@
 md-dialog {
   min-width: 500px;
 }
+
+.kudosFrom {
+  font-weight: normal;
+}
+
+.addButton {
+  margin-top: 20px;
+  margin-left: 20px;
+}

@@ -36,7 +36,7 @@ router.get('/student/behavior/:email', auth.hasRole('student'), require('./stude
 router.get('/student/officehours/:email', auth.hasRole('student'), require('./student.office.hours').show);
 router.get('/students/random', auth.hasRole('staff'), require('./namegame').index);
 
-router.get('/kudos', require('./kudos').index);
-router.post('/kudos', require('./kudos').create);
+router.get('/kudos', auth.hasRole('staff'), require('./kudos').index);
+router.post('/kudos', auth.hasRole('staff'), require('./kudos').create);
 
 module.exports = router;

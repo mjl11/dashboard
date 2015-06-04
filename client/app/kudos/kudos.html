@@ -1,18 +1,27 @@
-<md-button class="md-raised md-warn" ng-click="vm.newKudos($event)">Add Kudos</md-button>
-<!--
-<div layout="row">
-  <div flex hide-sm></div>
-  <md-content flex-sm="100" flex-gt-sm="75" class="kudos">
-    <md-list>
-      <md-list-item ng-repeat="record in vm.kudos">
-        <div class="md-list-item-text">
-          <h3>{{record.kudosTo}}</h3>
-          <h4>Sent by: {{record.kudosFrom}}</h4>
-          <p>{{record.kudosContent}}</p>
-        </div>
-        <md-divider ng-if="!$last"></md-divider>
-      </md-list-item>
-    </md-list>
-  </md-content>
-  <div flex hide-sm></div>
-</div>-->
+<div layout="column" layout-align="start center">
+  <div layout="row" layout-fill>
+    <div flex="10">
+     <md-button class="md-raised md-warn md-fab addButton" ng-click="vm.newKudos($event)">
+      <md-icon md-svg-icon="bower_components/material-design-icons/content/svg/production/ic_add_48px.svg"></md-icon>
+    </md-button>
+    </div>
+    <md-content flex class="kudos">
+      <md-list>
+        <md-list-item ng-repeat="item in vm.items">
+          <div class="md-list-item-text" layout-fill>
+            <div layout="row">
+              <h3 flex>{{item.kudosTo}}</h3>
+              <!-- <md-button class="md-icon-button md-primary" aria-label="like"> -->
+              <md-icon flex="10" ng-click="vm.like()" md-svg-icon="bower_components/material-design-icons/action/svg/production/ic_thumb_up_48px.svg"></md-icon>
+              <!-- </md-button> -->
+            </div>
+            <p>{{item.kudosContent}}</p>
+            <h4 class="kudosFrom">Sent by: {{item.kudosFrom}}</h4>
+          </div>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-content>
+    <div flex="10" hide-sm></div>
+  </div>
+</div>
