@@ -3,6 +3,17 @@
 	</div>
 	<div layout="column" layout-align="center center" layout-margin flex>
 		<div layout="row" layout-sm="column" layout-margin layout-fill flex>
+			<md-card class="top-kudos" flex>
+		      <md-card-content>
+		         <p>{{kudos.kudosContent}}</p>
+				 <h4>Sent by: {{kudos.kudosFrom}}</h4>
+		      </md-card-content>
+		      <md-card-footer>
+				{{kudos.kudosTo}}
+		      </md-card-footer>
+		    </md-card>
+		</div>
+		<div layout="row" layout-sm="column" layout-margin layout-fill flex>
 			<ada-chart items="overallItems" drilldown="drilldownItems" flex flex-gt-md="60"></ada-chart>
 			<div layout="column" layout-sm="column" layout-margin layout-fill flex>
 			<md-card class="on-track" flex>

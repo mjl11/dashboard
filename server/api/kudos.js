@@ -22,6 +22,15 @@ exports.index = function (req, res) {
     }).sort({ $natural: -1 });
 };
 
+exports.top = function (req, res) {
+    KudosSchema.find(function (err, kudos) {
+        if (err) {
+            return handleError(res, err);
+        }
+        return res.status(200).json(kudos);
+    }).sort({ likes: -1 }).limit(1);
+};
+
 exports.create = function (req, res) {
     KudosSchema.create(req.body, function (err, kudosResp) {
         if (err) { return handleError(res, err); }

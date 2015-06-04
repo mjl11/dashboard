@@ -37,6 +37,7 @@ router.get('/student/officehours/:email', auth.hasRole('student'), require('./st
 router.get('/students/random', auth.hasRole('staff'), require('./namegame').index);
 
 router.get('/kudos', auth.hasRole('staff'), require('./kudos').index);
+router.get('/kudos/top', auth.hasRole('staff'), require('./kudos').top);
 router.post('/kudos', auth.hasRole('staff'), require('./kudos').create);
 router.put('/kudos/:id', auth.hasRole('staff'), require('./kudos').put);
 

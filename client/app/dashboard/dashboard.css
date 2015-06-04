@@ -24,11 +24,11 @@
 
 .on-track md-card-content {
 	height: 150px;
-	background: #B3E5FC;
+	background: #A5D6A7;
 }
 
 .on-track md-card-footer {
-	background: #03A9F4;
+	background: #4CAF50;
 	order: 2;
 }
 
@@ -75,5 +75,29 @@
 	text-align: center;
 	font-weight: none;
 	font-size: 20px;
+	margin: 0;
+}
+
+.top-kudos md-card-content {
+	height: 150px;
+	background: #B3E5FC;
+}
+
+.top-kudos md-card-footer {
+	background: #03A9F4;
+	order: 2;
+}
+
+.top-kudos md-card-content h4 {
+	font-weight: none;
+	font-size: 14px;
+	text-align: right;
+	margin: 0;
+}
+
+.top-kudos md-card-content p {
+	font-weight: none;
+	font-style: italic;
+	font-size: 14px;
 	margin: 0;
 }

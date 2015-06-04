@@ -19,6 +19,10 @@ angular.module('appApp')
             StaffService.getBehavior().then(function(response) {
                 $scope.behavior = response.data;
             });
+            
+            StaffService.getTopKudos().then(function(response) {
+                $scope.kudos = response.data[0];
+            });
 
             StaffService.currentGPA().then(function(response) {
                 $scope.currentGPA = response.data[0].school;
