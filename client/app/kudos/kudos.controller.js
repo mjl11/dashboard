@@ -51,7 +51,7 @@ angular.module('appApp')
         vm.like = function(req) {
             var likes = req.likes;
             likes.push(Auth.getCurrentUser().email);
-            $http.update('/api/kudos/' + req._id, {
+            $http.put('/api/kudos/' + req._id, {
                 _id: req._id,
                 likes: likes
             });
@@ -64,6 +64,15 @@ angular.module('appApp')
                 vm.items = response.data;
             });
         };
+        
+        vm.alreadyLiked = function(req){
+            var result = isInArray(Auth.getCurrentUser().email, req);
+            return result;
+        };
+        
+        function isInArray(value, array) {
+          return array.indexOf(value) > -1;
+        }
 
     }
 ]);

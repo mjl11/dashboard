@@ -12,10 +12,22 @@
             <div layout="row">
               <h3 flex>{{item.kudosTo}}</h3>
               <!-- <md-button class="md-icon-button md-primary" aria-label="like"> -->
-              <md-icon flex="10" ng-click="vm.like(item)" md-svg-icon="bower_components/material-design-icons/action/svg/production/ic_thumb_up_48px.svg"></md-icon>
+              <md-icon 
+                flex="5" 
+                ng-click="vm.like(item)" 
+                ng-hide="vm.alreadyLiked(item.likes)"
+                md-svg-icon="bower_components/material-design-icons/action/svg/production/ic_thumb_up_48px.svg">
+              </md-icon>
+              <md-icon 
+                class="green-like-button"
+                flex="10" 
+                ng-show="vm.alreadyLiked(item.likes)"
+                md-svg-icon="bower_components/material-design-icons/action/svg/production/ic_thumb_up_48px.svg">
+              </md-icon>
+              <p flex="5">{{item.likes.length}}</p>
               <!-- </md-button> -->
             </div>
-            <p>{{item}}</p>
+            <p>{{item.kudosContent}}</p>
             <h4 class="kudosFrom">Sent by: {{item.kudosFrom}}</h4>
           </div>
           <md-divider ng-if="!$last"></md-divider>

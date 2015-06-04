@@ -15,3 +15,7 @@ md-dialog {
   margin-top: 20px;
   margin-left: 20px;
 }
+
+md-icon.green-like-button {
+  color: green;
+}

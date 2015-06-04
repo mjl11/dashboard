@@ -19,7 +19,7 @@ exports.index = function (req, res) {
             return handleError(res, err);
         }
         return res.status(200).json(kudos);
-    }).sort({$natural: -1});
+    }).sort({ $natural: -1 });
 };
 
 exports.create = function (req, res) {
@@ -29,10 +29,17 @@ exports.create = function (req, res) {
         return res.json(201, kudosResp);
     });
 };
-/**
+
 exports.put = function (req, res) {
-  KudosSchema.update({_id: req.params.id}, {likes: req.body.likes});  
-}; */
+    KudosSchema.update(
+        { _id: req.params.id }, 
+        { likes: req.body.likes }, 
+        { multi: false }, 
+        function (err, raw) {
+        if (err) return handleError(err);
+        //console.log('The raw response from Mongo was ', raw);
+    });
+};
 
 function handleError(res, err) {
     return res.send(500, err);
