@@ -58,6 +58,9 @@ angular.module('appApp')
                 },{
                     'name': 'Name Game',
                     'url': '/guess'
+                },{
+                    'name': 'The Zeroes',
+                    'url': '/the_zeroes'
                 }]
             }, {
                 'name': 'Assessments',

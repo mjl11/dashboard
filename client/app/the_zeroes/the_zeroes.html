@@ -1,0 +1,14 @@
+<img class="zeroes-logo" src="../../assets/images/the-zeroes.png" />
+<div layout="row" layout-fill>
+    <div flex="10" hide-sm>
+	</div>
+	<md-content class="md-padding" flex>
+		<md-list>
+			<md-list-item class="md-2-line the-zeroes-list" ng-repeat="student in vm.the_zeroes | orderBy:'last_name'">
+				{{student.last_name}}, {{student.first_name}}
+			</md-list-item>
+		</md-list>
+	</md-content>
+	<div flex="10" hide-sm>
+	</div>
+</div>

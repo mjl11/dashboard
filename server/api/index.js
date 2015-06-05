@@ -41,4 +41,6 @@ router.get('/kudos/top', auth.hasRole('staff'), require('./kudos').top);
 router.post('/kudos', auth.hasRole('staff'), require('./kudos').create);
 router.put('/kudos/:id', auth.hasRole('staff'), require('./kudos').put);
 
+router.get('/the_zeroes', auth.hasRole('staff'), require('./the_zeroes').index);
+
 module.exports = router;
