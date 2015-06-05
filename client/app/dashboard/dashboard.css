@@ -79,7 +79,7 @@
 }
 
 .top-kudos md-card-content {
-	height: 150px;
+	height: 100px;
 	background: #B3E5FC;
 }
 
@@ -98,6 +98,6 @@
 .top-kudos md-card-content p {
 	font-weight: none;
 	font-style: italic;
-	font-size: 14px;
+	font-size: 18px;
 	margin: 0;
 }

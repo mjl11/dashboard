@@ -21,7 +21,7 @@ angular.module('appApp')
             });
             
             StaffService.getTopKudos().then(function(response) {
-                $scope.kudos = response.data[0];
+                $scope.kudos = response.data;
             });
 
             StaffService.currentGPA().then(function(response) {
