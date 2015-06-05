@@ -23,12 +23,22 @@ exports.index = function (req, res) {
 };
 
 exports.top = function (req, res) {
-    KudosSchema.find(function (err, kudos) {
+    
+    KudosSchema.aggregate(
+        [{$unwind: "$likes"}, 
+        {$group: {_id: "$_id", len: {$sum: 1 } } }, 
+        {$sort: {len: -1 } }, {$limit:1}], function (err, result) {
         if (err) {
-            return handleError(res, err);
+            console.log(err);
+            return;
         }
-        return res.status(200).json(kudos);
-    }).sort({ likes: -1 }).limit(1);
+        KudosSchema.findOne(
+            {_id: result[0]._id}, 
+            function(err, kudos) {
+                return res.status(200).json(kudos);
+            }
+        );
+    });
 };
 
 exports.create = function (req, res) {
