@@ -7,7 +7,7 @@
 var gulp = require('gulp');
 var open = require('gulp-open');
 
-var config = require('../dist/server/config/environment');
+var config = require('../server/config/environment');
 
 var openOpts = {
   url: 'http://localhost:' + config.port,
