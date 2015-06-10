@@ -44,8 +44,7 @@ exports.top = function (req, res) {
 exports.create = function (req, res) {
     KudosSchema.create(req.body, function (err, kudosResp) {
         if (err) { return handleError(res, err); }
-        //console.log(req.body);
-        return res.json(201, kudosResp);
+        return res.status(200).json(kudosResp);
     });
 };
 

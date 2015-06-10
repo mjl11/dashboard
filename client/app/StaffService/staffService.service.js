@@ -80,6 +80,9 @@ angular.module('appApp')
                 },
                 postKudos: function(req){
                     $http.post('/api/kudos', req);
+                },
+                getTheZeroes: function(){
+                    return $http.get('/api/the_zeroes');
                 }
             };
         }

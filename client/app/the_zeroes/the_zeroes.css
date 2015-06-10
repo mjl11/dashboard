@@ -1,0 +1,16 @@
+@media (min-width: 500px) {
+  
+  .the-zeroes-list {
+      float: left;
+      width: 33%; 
+  }  
+  
+}
+
+.zeroes-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
